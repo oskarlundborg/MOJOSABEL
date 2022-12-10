@@ -1,7 +1,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../include/Session.h"
-#include "../include/System.h"
+#include "Session.h"
+#include "System.h"
 
 namespace mojosabel {
     Session::Session()

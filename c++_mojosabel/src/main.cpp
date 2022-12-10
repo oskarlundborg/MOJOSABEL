@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 #include <string>
-#include "../include/Session.h"
+#include "Session.h"
 
 #define SCREEN_WIDTH 600
 #define SCREEN_HEIGHT 400
