@@ -1,7 +1,7 @@
-#include "Constants.h"
-#include "System.h"
 #include <SDL2/SDL.h>
 #include <iostream>
+#include "../include/Constants.h"
+#include "../include/System.h"
 
 namespace mojosabel {
 

@@ -1,12 +1,12 @@
-
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "Session.h"
+#include "../include/Session.h"
+#include "../include/System.h"
 
 namespace mojosabel {
     Session::Session()
     {
-        std::cout("Hej det funkar, session\n");
+        std::cout << "Hej det funkar, session" << std::endl;
     }
 
     void Session::run(){
