@@ -16,5 +16,8 @@ int main(int argc, char* argv[]){
 
     ses.run();
 
+
+    std::cout << "hej då!" << std::endl;
+
     return 0;
 }
