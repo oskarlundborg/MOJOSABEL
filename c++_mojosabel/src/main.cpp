@@ -9,19 +9,10 @@
 using namespace mojosabel;
 
 int main(int argc, char* argv[]){
-
-    std::cout << "Fuck world!" << std::endl;
-
-    std::cout << "142354878690 dead cops.\nI am garbage man." << std::endl;
-
-    std::cout << "warhammer rocks" << std::endl;
     
     Session ses;
 
     ses.run();
-
-
-    std::cout << "hej då!" << std::endl;
 
     return 0;
 }
