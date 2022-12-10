@@ -1,0 +1,1 @@
+//(Definierar 'gResPath', din sökväg till dina resurser, t.ex. bilder/ljud/typsnitt)
