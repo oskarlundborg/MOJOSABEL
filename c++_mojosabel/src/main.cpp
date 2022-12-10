@@ -11,6 +11,8 @@ using namespace mojosabel;
 int main(int argc, char* argv[]){
 
     std::cout << "Fuck world!" << std::endl;
+
+    std::cout << "warhammer rocks" << std::endl;
     
     Session ses;
 
