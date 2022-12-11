@@ -14,5 +14,7 @@ int main(int argc, char* argv[]){
 
     ses.run();
 
+    std::cout << "hej då bitch" << std::endl;
+
     return 0;
 }
