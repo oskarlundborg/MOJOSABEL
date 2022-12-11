@@ -10,6 +10,8 @@ using namespace mojosabel;
 
 int main(int argc, char* argv[]){
     
+    std::cout << "Hej bitch" << std::endl;
+
     Session ses;
 
     ses.run();
