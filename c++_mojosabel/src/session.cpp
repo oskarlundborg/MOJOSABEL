@@ -4,6 +4,7 @@
 #include "System.h"
 
 namespace mojosabel {
+    
     Session::Session()
     {
         std::cout << "Hej det funkar, session" << std::endl;
