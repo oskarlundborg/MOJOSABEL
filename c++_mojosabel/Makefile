@@ -7,7 +7,7 @@ OBJ_NAME = play
 INCLUDE_PATHS = -IC:/msys64/mingw64/include -Iinclude
 LIBRARY_PATHS = -LC:/msys64/mingw64/lib
 COMPILER_FLAGS = -std=c++17 -Wall -O0 -g
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 all:
 	$(CC) $(COMPILER_FLAGS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(SRC_FILES) $(LINKER_FLAGS) -o $(BUILD_DIR)/$(OBJ_NAME)

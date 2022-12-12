@@ -3,8 +3,11 @@
 
 #include "Ui_sprite.h"
 
-class Ui_slider : public Ui_sprite {
+namespace mojosabel {
+   class Ui_slider : public Ui_sprite {
     
-};
+}; 
+}
+
 
 #endif

@@ -3,8 +3,11 @@
 
 #include "Ui_sprite.h"
 
-class Ui_input_field : public Ui_sprite {
+namespace mojosabel {
+   class Ui_input_field : public Ui_sprite {
 
-};
+}; 
+}
+
 
 #endif

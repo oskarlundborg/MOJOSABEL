@@ -1,17 +1,21 @@
-#ifndef GAME_OBJECT_H
-#define GAME_OBJECT_H
+// #ifndef GAME_OBJECT_H
+// #define GAME_OBJECT_H
 
-#include "Sprite.h"
+// #include "Sprite.h"
 
-class Game_object : public Sprite {
+// namespace mojosabel {
 
-private:
-    float elasticity;
+//     class Game_object : public Sprite {
 
-public:
-    float GetElasticity() const;
+//     private:
+//         float elasticity;
 
-};
+//     public:
+//         float GetElasticity() const;
+
+//     };
+// }
 
 
-#endif
+
+// #endif
