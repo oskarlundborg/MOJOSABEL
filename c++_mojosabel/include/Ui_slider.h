@@ -3,8 +3,18 @@
 
 #include "Ui_sprite.h"
 
-class Ui_slider : public Ui_sprite {
-    
-};
+namespace mojosabel {
+   class Ui_slider : public Ui_sprite 
+   {
+      public:
+         static Ui_slider* getInstance(int x, int y, int w, int h, std::string txt);
+         void draw() const;
+         ~Ui_slider();
+      protected:
+         Ui_slider(int x, int y, int w, int h, std::string txt);
+      private:
+   }; 
+}
+
 
 #endif

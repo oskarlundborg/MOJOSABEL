@@ -3,8 +3,19 @@
 
 #include "Ui_sprite.h"
 
-class Ui_button : public Ui_sprite {
- 
-};
+namespace mojosabel {
+    
+    class Ui_button : public Ui_sprite 
+    {
+        public:
+            static Ui_button* getInstance(int x, int y, int w, int h, std::string txt);
+            void draw() const;
+            ~Ui_button();
+        protected:
+            Ui_button(int x, int y, int w, int h, std::string txt);
+        private:
+    };
+}
+
 
 #endif

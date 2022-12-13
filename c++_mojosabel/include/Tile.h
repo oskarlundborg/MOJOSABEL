@@ -3,13 +3,16 @@
 
 #include "Grid_object.h"
 
-class Tile {
-private:
-    Grid_object *content;
+namespace mojosabel {
+   class Tile {
+    private:
+        Grid_object *content;
 
-public:
-    void DrawContents();
+    public:
+        void DrawContents();
 
-};
+    }; 
+}
+
 
 #endif

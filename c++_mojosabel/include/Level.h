@@ -1,17 +1,20 @@
-#ifndef LEVEL_H
-#define LEVEL_H
+// #ifndef LEVEL_H
+// #define LEVEL_H
 
-#include "Tile.h"
-#include "Free_object.h"
+// #include "Tile.h"
+// #include "Free_object.h"
 
-class Level{
-private:
-    Tile **tileGrid;
-    Free_object *freeObjects;
+// namespace mojosabel {
+//     class Level {
+// private:
+//     Tile **tileGrid;
+//     Free_object *freeObjects;
 
-public:
-    void PlaceFreeOnGrid();
+// public:
+//     void PlaceFreeOnGrid();
 
-};
+// };
+// }
 
-#endif
+
+// #endif
