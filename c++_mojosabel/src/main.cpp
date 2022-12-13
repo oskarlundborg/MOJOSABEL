@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
 
     Session ses;
 
-    Label* lbl = Label::getInstance(270, 100, 100, 70, "yay kod!");
+    Ui_label* lbl = Ui_label::getInstance(270, 100, 100, 70, "yay kod!");
 	ses.add(lbl);
     ses.run();
 

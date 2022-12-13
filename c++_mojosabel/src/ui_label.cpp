@@ -5,19 +5,19 @@ using namespace std;
 
 namespace mojosabel {
 
-	Label* Label::getInstance(int x, int y, int w, int h, std::string txt) 
+	Ui_label* Ui_label::getInstance(int x, int y, int w, int h, std::string txt) 
 	{
-		return new Label(x, y, w, h, txt);
+		return new Ui_label(x, y, w, h, txt);
 	}
 
-	Label::Label(int x, int y, int w, int h, std::string txt): Ui_sprite(x,y,w,h,txt)
+	Ui_label::Ui_label(int x, int y, int w, int h, std::string txt): Ui_sprite(x,y,w,h,txt)
 	{
 		SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), { 0,0,0 });
 		texture = SDL_CreateTextureFromSurface(sys.getRen(), surf);
 		SDL_FreeSurface(surf);
 	}
 
-	void Label::draw() const {
+	void Ui_label::draw() const {
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
 	}
 }

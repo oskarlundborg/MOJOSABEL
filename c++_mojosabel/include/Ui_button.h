@@ -10,10 +10,12 @@ namespace mojosabel {
         public:
             static Ui_button* getInstance(int x, int y, int w, int h, std::string txt);
             void draw() const;
+            virtual void perform(Ui_button* source) {}
             ~Ui_button();
         protected:
             Ui_button(int x, int y, int w, int h, std::string txt);
         private:
+            bool isDown = false;
     };
 }
 
