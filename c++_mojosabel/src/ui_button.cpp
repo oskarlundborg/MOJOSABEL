@@ -1,5 +1,9 @@
+#include <SDL2/SDL_image.h>
+
 #include "Ui_button.h"
 #include "System.h"
+#include "Constants.h"
+
 
 using namespace std;
 
@@ -15,6 +19,16 @@ namespace mojosabel {
 		SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), { 0,0,0 });
 		texture = SDL_CreateTextureFromSurface(sys.getRen(), surf);
 		SDL_FreeSurface(surf);
+		buttonImageDown = IMG_LoadTexture(sys.getRen(), (constants::gResPath + "images/UppKnapp.png").c_str() );
+		buttonImageUp = IMG_LoadTexture(sys.getRen(), (constants::gResPath + "images/NerKnapp.png").c_str() );
+	
+	}
+
+	Ui_button::~Ui_button()
+	{
+		SDL_DestroyTexture(texture);
+		SDL_DestroyTexture(buttonImageDown);
+		SDL_DestroyTexture(buttonImageUp);
 	}
 	
 

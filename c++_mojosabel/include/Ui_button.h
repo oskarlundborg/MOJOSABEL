@@ -16,6 +16,8 @@ namespace mojosabel {
             Ui_button(int x, int y, int w, int h, std::string txt);
         private:
             bool isDown = false;
+            SDL_Texture* buttonImageDown;
+            SDL_Texture* buttonImageUp;
     };
 }
 
