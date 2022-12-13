@@ -3,15 +3,19 @@
 
 #include "Sprite.h"
 
+
 namespace mojosabel {
     class Ui_sprite : public Sprite {
     private:
-        char* text;
-
+        
+    protected:
+        std::string text;
+        SDL_Texture* texture;
+        Ui_sprite(int x, int y, int w, int h, std::string txt);
     public:
-        void SetText(char* text);
-        char* GetText() {return text; }
-
+        virtual void setText(std::string text);
+        virtual std::string getText() const {return text; }
+        ~Ui_sprite();
     };
 }
 
