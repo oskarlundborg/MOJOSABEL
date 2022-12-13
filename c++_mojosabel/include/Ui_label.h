@@ -1,8 +1,7 @@
-#ifndef LABEL_H
-#define LABEL_H
+#ifndef UI_LABEL_H
+#define UI_LABEL_H
+
 #include "Ui_sprite.h"
-#include <string>
-#include <SDL2/SDL.h>
 
 namespace mojosabel {
 
