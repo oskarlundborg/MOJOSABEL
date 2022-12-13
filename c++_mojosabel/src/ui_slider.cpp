@@ -1,5 +1,5 @@
 #include "Ui_slider.h"
-#include <iostream>
+#include "System.h"
 
 using namespace std;
 

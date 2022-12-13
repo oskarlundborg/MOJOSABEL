@@ -1,11 +1,4 @@
-#include <SDL2/SDL_image.h>
-#include <iostream>
-
-
-#include "Session.h"
-#include "System.h"
 #include "Sprite.h"
-#include "Constants.h"
 
 namespace mojosabel {
 
