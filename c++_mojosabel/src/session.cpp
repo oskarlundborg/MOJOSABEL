@@ -20,11 +20,35 @@ namespace mojosabel {
     void Session::run(){
         bool quit = false;
         while(!quit){
-            SDL_Event eve;
-            while(SDL_PollEvent(&eve)){
-                switch(eve.type){
+            SDL_Event event;
+            while(SDL_PollEvent(&event)){
+                switch(event.type){
                     case SDL_QUIT:
                         quit = true;
+                        break;
+                    case SDL_MOUSEBUTTONDOWN:
+                        for (Sprite* s : sprites)
+                        {
+                            s -> mouseDown(event);
+                        }
+                        break;
+                    case SDL_MOUSEBUTTONUP:
+                        for (Sprite* s : sprites)
+                        {
+                            s -> mouseUp(event);
+                        }
+                        break;
+                    case SDL_KEYDOWN:
+                        for (Sprite* s : sprites)
+                        {
+                            s -> keyDown(event);
+                        }
+                        break;
+                    case SDL_KEYUP:
+                        for (Sprite* s : sprites)
+                        {
+                            s -> keyUp(event);
+                        }
                         break;
                 }
             }

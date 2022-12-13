@@ -5,14 +5,14 @@
 
 namespace mojosabel {
 
-	class Label: public Ui_sprite
+	class Ui_label: public Ui_sprite
 	{
 	public:
-		static Label* getInstance(int x, int y, int w, int h, std::string txt);
+		static Ui_label* getInstance(int x, int y, int w, int h, std::string txt);
 		void draw() const;
-		~Label();
+		~Ui_label();
 	protected:
-		Label(int x, int y, int w, int h, std::string txt);
+		Ui_label(int x, int y, int w, int h, std::string txt);
 	private:
 		
 	};

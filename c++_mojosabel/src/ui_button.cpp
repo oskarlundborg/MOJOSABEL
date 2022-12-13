@@ -16,6 +16,7 @@ namespace mojosabel {
 		texture = SDL_CreateTextureFromSurface(sys.getRen(), surf);
 		SDL_FreeSurface(surf);
 	}
+	
 
 	void Ui_button::draw() const {
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
