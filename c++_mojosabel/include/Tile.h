@@ -6,7 +6,7 @@
 namespace mojosabel {
    class Tile {
     private:
-        Grid_object *content;
+        //Grid_object *content;
 
     public:
         void DrawContents();

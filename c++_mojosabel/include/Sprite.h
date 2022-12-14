@@ -8,15 +8,14 @@ namespace mojosabel {
 
     class Sprite {
     private:
-        int layer;
+        int layer = 0;
         SDL_Rect rect;
         Sprite(const Sprite&) = delete;
         const Sprite& operator=(const Sprite&) = delete;
-
     protected:
         Sprite(int x, int y, int w, int h);
     public:
-        ~Sprite();
+        virtual ~Sprite() {}
         virtual void mouseDown(const SDL_Event&) {}
 		virtual void mouseUp(const SDL_Event&) {}
         virtual void keyDown(const SDL_Event&) {}
@@ -24,8 +23,10 @@ namespace mojosabel {
         virtual void draw() const = 0;
         //virtual void tick();
         const SDL_Rect& getRect() const { return rect; };
-        
+        int getLayer() const { return layer; }
     };
+
+    bool compareLayer(Sprite*, Sprite*);
 }
 
 

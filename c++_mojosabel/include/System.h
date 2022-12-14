@@ -17,6 +17,7 @@ namespace mojosabel
         ~System();
         SDL_Renderer* getRen() const;
         TTF_Font* getFont() const;
+        SDL_Window* getWin() const;
     };
 
     extern System sys;

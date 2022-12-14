@@ -14,7 +14,7 @@ namespace mojosabel {
 	protected:
 		Ui_label(int x, int y, int w, int h, std::string txt);
 	private:
-		
+
 	};
 
 }

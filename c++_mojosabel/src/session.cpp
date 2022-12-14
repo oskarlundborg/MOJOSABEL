@@ -9,6 +9,7 @@ namespace mojosabel {
     Session::Session()
     {
         std::cout << "Hej det funkar, session" << std::endl;
+        rootCanvas = new Canvas();
     }
 
     void Session::add(Sprite* spriteToAdd)
@@ -60,6 +61,7 @@ namespace mojosabel {
                 s->draw();
                 //std::cout << "yay draw" << std::endl;
             }
+            rootCanvas->drawSprites();
             SDL_RenderPresent(sys.getRen());
         }
     }

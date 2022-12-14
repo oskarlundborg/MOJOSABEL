@@ -12,14 +12,14 @@ namespace mojosabel {
     class Session{
     private:
         //World world;
-        Canvas canvas;
+        Canvas *rootCanvas;
         std::vector<Sprite*> sprites;
 
     public:
         Session();
         void add(Sprite* spriteToAdd);
+        Canvas* getRootCanvas() {return rootCanvas;};
         void CreateNewWorld(int levelCount);
-        void CreateNewCanvas();
         void run();
         ~Session();
     };
