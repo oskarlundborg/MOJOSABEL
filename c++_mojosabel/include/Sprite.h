@@ -9,10 +9,11 @@ namespace mojosabel {
     class Sprite {
     private:
         int layer = 0;
-        SDL_Rect rect;
+        // SDL_Rect rect;
         Sprite(const Sprite&) = delete;
         const Sprite& operator=(const Sprite&) = delete;
     protected:
+        SDL_Rect rect;
         Sprite(int x, int y, int w, int h);
     public:
         virtual ~Sprite() {}

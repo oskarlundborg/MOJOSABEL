@@ -4,6 +4,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
+
+
 namespace mojosabel
 {
     class System {
