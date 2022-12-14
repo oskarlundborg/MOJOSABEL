@@ -20,7 +20,8 @@ namespace mojosabel {
         std::cout << "resPath: " << constants::gResPath << std::endl;
     }
 
-    System::~System(){
+    System::~System()
+    {
         TTF_CloseFont(font);
         TTF_Quit();
         SDL_DestroyWindow(win);
@@ -28,12 +29,19 @@ namespace mojosabel {
         SDL_Quit();
     }
 
-    SDL_Renderer* System::getRen() const {
+    SDL_Renderer* System::getRen() const 
+    {
         return ren;
     }
     
-    TTF_Font* System::getFont() const {
+    TTF_Font* System::getFont() const 
+    {
         return font;
+    }
+
+    SDL_Window* System::getWin() const 
+    {
+        return win;
     }
     
    System sys;    

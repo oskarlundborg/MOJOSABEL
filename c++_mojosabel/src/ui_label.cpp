@@ -17,7 +17,13 @@ namespace mojosabel {
 		SDL_FreeSurface(surf);
 	}
 
-	void Ui_label::draw() const {
+	Ui_label::~Ui_label()
+	{
+		SDL_DestroyTexture(texture);
+	}
+
+	void Ui_label::draw() const 
+	{
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
 	}
 }

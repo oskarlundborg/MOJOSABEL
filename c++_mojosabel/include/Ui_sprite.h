@@ -13,8 +13,8 @@ namespace mojosabel {
         SDL_Texture* texture;
         Ui_sprite(int x, int y, int w, int h, std::string txt);
     public:
-        virtual void setText(std::string text);
-        virtual std::string getText() const {return text; }
+        void setText(std::string text);
+        std::string getText() const { return text; }
         ~Ui_sprite();
     };
 }
