@@ -9,6 +9,8 @@ namespace mojosabel
     class Player : public Sprite {
         private:
             int speed = 0;
+            int pHealth = 0;
+            bool firing;
             bool movingUp;
             bool movingDown;
             bool movingLeft;
@@ -24,6 +26,9 @@ namespace mojosabel
             static Player* getInstance(int x, int y, int w, int h) { return new Player(x, y, w, h);}
             void loadTexture(std::string filename);
             void setSpeed(int newSpeed) {speed = newSpeed;}
+            void health(int newHealth) {pHealth = newHealth;}
+            int health() { return pHealth; }
+            void fire();
             void keyDown(const SDL_Event& event);
             void keyUp(const SDL_Event& event);
             void draw();
