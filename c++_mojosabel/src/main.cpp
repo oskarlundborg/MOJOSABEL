@@ -52,6 +52,7 @@ int main(int argc, char* argv[])
     Player* player = Player::getInstance(200, 200, 50, 50);
     ses.add(player);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
+    player->setSpeed(1);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	ses.add(lbl);

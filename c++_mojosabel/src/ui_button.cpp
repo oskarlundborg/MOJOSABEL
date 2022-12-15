@@ -31,7 +31,7 @@ namespace mojosabel {
 	}
 	
 
-	void Ui_button::draw() const 
+	void Ui_button::draw() 
 	{	
 		if (isDown)
 		{

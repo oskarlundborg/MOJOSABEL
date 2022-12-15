@@ -8,7 +8,7 @@ namespace mojosabel {
    {
       public:
          static Ui_input_field* getInstance(int x, int y, int w, int h, std::string txt);
-         void draw() const;
+         void draw();
          ~Ui_input_field() {}
       protected:
          Ui_input_field(int x, int y, int w, int h, std::string txt);

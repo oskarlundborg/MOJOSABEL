@@ -11,7 +11,7 @@ namespace mojosabel {
             static Ui_button* getInstance(int x, int y, int w, int h, std::string txt);
             void mouseDown(const SDL_Event&);
             void mouseUp(const SDL_Event&);
-            void draw() const;
+            void draw();
             virtual void perform(Ui_button* source) {}
             ~Ui_button();
         protected:
