@@ -6,15 +6,11 @@
 
 namespace mojosabel
 {
-    class Player : public Sprite {
+    class Player : public Sprite 
+    {
         private:
             int speed = 0;
             int pHealth = 0;
-            bool firing;
-            bool movingUp;
-            bool movingDown;
-            bool movingLeft;
-            bool movingRight;
             SDL_Texture* texture;
             Player(int x, int y, int w, int h) : Sprite (x, y, w, h) {}
             void move();
@@ -29,12 +25,9 @@ namespace mojosabel
             void health(int newHealth) {pHealth = newHealth;}
             int health() { return pHealth; }
             void fire();
-            void keyDown(const SDL_Event& event);
-            void keyUp(const SDL_Event& event);
             void draw();
             ~Player();
     };
 }
-
 
 #endif

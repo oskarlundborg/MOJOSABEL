@@ -6,11 +6,12 @@
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
-
+#define MAX_KEYBOARD_KEYS 350
 
 namespace mojosabel
 {
-    class System {
+    class System 
+    {
     private:
         SDL_Window* win;
         SDL_Renderer* ren;
@@ -22,6 +23,8 @@ namespace mojosabel
         SDL_Renderer* getRen() const;
         TTF_Font* getFont() const;
         SDL_Window* getWin() const;
+       // int *keyboard;
+        int keyboard[MAX_KEYBOARD_KEYS] = {0};
     };
 
     extern System sys;

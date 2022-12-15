@@ -1,26 +1,26 @@
-#include "Bullet.h"
+// #include "Bullet.h"
 
 
-namespace mojosabel {
+// namespace mojosabel {
     
-    Bullet::move()
-    {
-        y++;
-    }
+//     Bullet::move()
+//     {
+//         y++;
+//     }
 
-    Bullet::draw()
-    {
-        move();
-        SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
-    }
+//     Bullet::draw()
+//     {
+//         move();
+//         SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
+//     }
 
-    Bullet::~Bullet()
-    {
-        SDL_DestroyTexture(texture);
-    }
+//     Bullet::~Bullet()
+//     {
+//         SDL_DestroyTexture(texture);
+//     }
 
-    void Bullet::loadTexture(std::string filename)
-    {
-        texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
-    }
-}
+//     void Bullet::loadTexture(std::string filename)
+//     {
+//         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
+//     }
+// }

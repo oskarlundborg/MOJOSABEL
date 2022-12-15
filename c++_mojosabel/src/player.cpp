@@ -22,28 +22,12 @@ namespace mojosabel {
         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
     }
 
-    void Player::keyDown(const SDL_Event& event) 
-    {
-        if(event.key.keysym.sym == SDLK_w) { movingUp = true; }
-        if(event.key.keysym.sym == SDLK_d) { movingRight = true; }
-        if(event.key.keysym.sym == SDLK_s) { movingDown = true; }
-        if(event.key.keysym.sym == SDLK_a) { movingLeft = true; }
-    }
-
-    void Player::keyUp(const SDL_Event& event)
-    {
-        if(event.key.keysym.sym == SDLK_w) { movingUp = false; }
-        if(event.key.keysym.sym == SDLK_d) { movingRight = false; }
-        if(event.key.keysym.sym == SDLK_s) { movingDown = false; }
-        if(event.key.keysym.sym == SDLK_a) { movingLeft = false; }
-    }
-
     void Player::move() 
     {
-        if(movingUp) { moveUp(speed); }
-        if(movingDown) { moveDown(speed); }
-        if(movingLeft) { moveLeft(speed); }
-        if(movingRight) { moveRight(speed); }
+        if(sys.keyboard[SDL_SCANCODE_W]) { moveUp(speed); }
+        if(sys.keyboard[SDL_SCANCODE_S]) { moveDown(speed); }
+        if(sys.keyboard[SDL_SCANCODE_A]) { moveLeft(speed); }
+        if(sys.keyboard[SDL_SCANCODE_D]) { moveRight(speed); }
     }
 
     void Player::moveUp(int dist) { rect.y -= dist; }

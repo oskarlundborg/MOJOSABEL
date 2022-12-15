@@ -14,16 +14,35 @@ namespace mojosabel {
 
     void Session::add(Sprite* spriteToAdd)
     {
-        sprites.push_back(spriteToAdd);
-        
+        sprites.push_back(spriteToAdd); 
     }
 
-    void Session::run(){
+    void Session::doKeyUp(SDL_KeyboardEvent *event)
+    {
+        if (event->keysym.scancode < MAX_KEYBOARD_KEYS)
+        {
+            sys.keyboard[event->keysym.scancode] = 0;
+        }
+    }
+
+    void Session::doKeyDown(SDL_KeyboardEvent *event)
+    {
+        if (/*event->repeat == 0 && */ event->keysym.scancode < MAX_KEYBOARD_KEYS)
+        {
+            sys.keyboard[event->keysym.scancode] = 1;
+        }
+    }
+
+    void Session::run()
+    {
         bool quit = false;
-        while(!quit){
+        while(!quit)
+        {
             SDL_Event event;
-            while(SDL_PollEvent(&event)){
-                switch(event.type){
+            while(SDL_PollEvent(&event))
+            {
+                switch(event.type)
+                {
                     case SDL_QUIT:
                         quit = true;
                         break;
@@ -40,16 +59,10 @@ namespace mojosabel {
                         }
                         break;
                     case SDL_KEYDOWN:
-                        for (Sprite* s : sprites)
-                        {
-                            s -> keyDown(event);
-                        }
+                        doKeyDown(&event.key);
                         break;
                     case SDL_KEYUP:
-                        for (Sprite* s : sprites)
-                        {
-                            s -> keyUp(event);
-                        }
+                        doKeyUp(&event.key);
                         break;
                 }
             }

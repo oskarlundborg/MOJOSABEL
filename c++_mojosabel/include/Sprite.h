@@ -14,7 +14,7 @@ namespace mojosabel {
         const Sprite& operator=(const Sprite&) = delete;
     protected:
         SDL_Rect rect;
-        Sprite(int x, int y, int w, int h);
+        Sprite(int x, int y, int w, int h) : rect {x, y, w, h} {}
     public:
         virtual ~Sprite() {}
         virtual void mouseDown(const SDL_Event&) {}
