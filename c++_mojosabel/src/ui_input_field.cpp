@@ -17,7 +17,7 @@ namespace mojosabel {
 		SDL_FreeSurface(surf);
 	}
 
-	void Ui_input_field::draw() const {
+	void Ui_input_field::draw(){
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
 	}
 }

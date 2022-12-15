@@ -22,7 +22,7 @@ namespace mojosabel {
 		SDL_DestroyTexture(texture);
 	}
 
-	void Ui_label::draw() const 
+	void Ui_label::draw()
 	{
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
 	}

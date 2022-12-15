@@ -17,7 +17,8 @@ namespace mojosabel {
 		SDL_FreeSurface(surf);
 	}
 
-	void Ui_slider::draw() const {
+	void Ui_slider::draw() 
+	{
 		SDL_RenderCopy(sys.getRen(), texture, NULL, &getRect());
 	}
 }

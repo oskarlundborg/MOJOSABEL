@@ -21,7 +21,6 @@ namespace mojosabel {
 		SDL_FreeSurface(surf);
 		buttonImageDown = IMG_LoadTexture(sys.getRen(), (constants::gResPath + "images/DownButton.png").c_str() );
 		buttonImageUp = IMG_LoadTexture(sys.getRen(), (constants::gResPath + "images/UpButton.png").c_str() );
-	
 	}
 
 	Ui_button::~Ui_button()
@@ -32,7 +31,7 @@ namespace mojosabel {
 	}
 	
 
-	void Ui_button::draw() const 
+	void Ui_button::draw() 
 	{	
 		if (isDown)
 		{
