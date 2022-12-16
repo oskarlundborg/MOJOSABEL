@@ -13,7 +13,7 @@ namespace mojosabel {
     private:
         
         SDL_Texture* texture;
-
+        
     };
 }
 #endif

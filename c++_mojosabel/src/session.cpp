@@ -33,8 +33,31 @@ namespace mojosabel {
         }
     }
 
+    void Session::capFrameRate (long *renderTime, float *remainder)
+    {
+        long wait, frameTime;
+
+        wait = 16 + *remainder; 
+
+        *remainder -= (int)*remainder;
+
+        frameTime = SDL_GetTicks() - *renderTime;
+
+        wait -= frameTime;
+
+        if (wait < 1) { wait = 1; }
+
+        SDL_Delay(wait);
+
+        *remainder += 0.667;
+
+        *renderTime = SDL_GetTicks();
+    }
+
     void Session::run()
     {
+        renderTime = SDL_GetTicks();
+        remainder = 0;
         bool quit = false;
         while(!quit)
         {
@@ -76,6 +99,7 @@ namespace mojosabel {
             }
             rootCanvas->drawSprites();
             SDL_RenderPresent(sys.getRen());
+            capFrameRate(&renderTime, &remainder);
         }
     }
 

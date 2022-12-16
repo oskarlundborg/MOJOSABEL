@@ -14,6 +14,8 @@ namespace mojosabel {
     {
     private:
         //World world;
+        long renderTime; //tiden det tog för förra framen att rendera
+        float remainder; //
         Canvas *rootCanvas;
         std::vector<Sprite*> sprites;
         void doKeyUp(SDL_KeyboardEvent* event);
@@ -23,6 +25,7 @@ namespace mojosabel {
         void add(Sprite* spriteToAdd);
         Canvas* getRootCanvas() {return rootCanvas;};
         void CreateNewWorld(int levelCount);
+        void capFrameRate(long *renderTime, float *remainder);
         void run();
         ~Session();
     };

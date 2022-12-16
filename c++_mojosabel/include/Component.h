@@ -14,6 +14,7 @@ namespace mojosabel {
     public:
         virtual void start() {}
         virtual void update() {}
+        virtual void draw() {}
         const SDL_Rect& getRect() const { return rect; };
     };
 }
