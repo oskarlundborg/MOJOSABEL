@@ -16,6 +16,10 @@ namespace mojosabel {
     {
         sprites.push_back(spriteToAdd); 
     }
+    void Session::add(Entity* entityToAdd)
+    {
+        entities.push_back(entityToAdd);
+    }
 
     void Session::doKeyUp(SDL_KeyboardEvent *event)
     {
@@ -89,13 +93,21 @@ namespace mojosabel {
                         break;
                 }
             }
-            //std::cout << "while klar" << std::endl;
+
+            
             SDL_SetRenderDrawColor(sys.getRen(), 255, 255, 255, 255);
             SDL_RenderClear(sys.getRen());
+
+            // Uppdaterar och ritar entities
+            for (auto e : entities)
+            {
+                e->update();
+            }
+
+            // Ritar sprite objekt
             for (Sprite* s : sprites)
             {
                 s->draw();
-                //std::cout << "yay draw" << std::endl;
             }
             rootCanvas->drawSprites();
             SDL_RenderPresent(sys.getRen());

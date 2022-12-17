@@ -1,22 +1,30 @@
-#ifndef PLAYERENTITY_H
-#define PLAYERENTITY_H
+#ifndef PLAYER_ENTITY_H
+#define PLAYER_ENTITY_H
 
+#include <vector>
 #include "Entity.h"
+#include "BulletEntity.h"
+
+
 namespace mojosabel {
 
     class PlayerEntity  : public Entity
     {
-        public:
-            int speed = 0;
-            SDL_Texture* loadTexture(std::string filename);
-            void move();
-            void moveUp(int x);
-            void moveDown (int x);
-            void moveLeft(int x);
-            void moveRight(int x);
-            void fire();
-            void draw(SDL_Texture* tex, int x, int y);
-            void update();
+    public:
+        int speed;
+        int reload;
+        std::vector<BulletEntity*> bullets;
+        PlayerEntity() : PlayerEntity(0, 0, 0, 0, 1, 1, 1) {}
+        PlayerEntity(float xVal, float yVal, float dxVal, float dyVal, int healthVal, int speedVal, int reloadVal) : Entity(xVal, yVal, dxVal, dyVal, healthVal), speed{speedVal}, reload{reloadVal} {}
+        void move();
+        void moveUp(int speed);
+        void moveDown (int speed);
+        void moveLeft(int speed);
+        void moveRight(int speed);
+        void fire();
+        void update();
+        void destroyBullet(BulletEntity*);
     };
 }
+
 #endif

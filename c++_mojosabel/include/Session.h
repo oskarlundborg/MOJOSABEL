@@ -7,6 +7,7 @@
 #include "Canvas.h"
 #include "Sprite.h"
 #include "System.h"
+#include "Entity.h"
 
 namespace mojosabel {
 
@@ -18,11 +19,13 @@ namespace mojosabel {
         float remainder; //
         Canvas *rootCanvas;
         std::vector<Sprite*> sprites;
+        std::vector<Entity*> entities;
         void doKeyUp(SDL_KeyboardEvent* event);
         void doKeyDown(SDL_KeyboardEvent* event);
     public:
         Session();
         void add(Sprite* spriteToAdd);
+        void add(Entity* entityToAdd);
         Canvas* getRootCanvas() {return rootCanvas;};
         void CreateNewWorld(int levelCount);
         void capFrameRate(long *renderTime, float *remainder);

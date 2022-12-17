@@ -23,7 +23,7 @@ namespace mojosabel
         SDL_Renderer* getRen() const;
         TTF_Font* getFont() const;
         SDL_Window* getWin() const;
-       // int *keyboard;
+        bool isWithinBounds(float x, float y);
         int keyboard[MAX_KEYBOARD_KEYS] = {0};
     };
 

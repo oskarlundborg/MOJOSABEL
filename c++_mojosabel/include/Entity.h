@@ -6,20 +6,23 @@
 
 namespace mojosabel {
 
-    class Entity {
-        
+    class Entity 
+    {
     public:
-        int x;
-        int y;
-        int dx;
-        int dy;
+        Entity() : Entity(0, 0, 0, 0, 1) {}
+        Entity(float xVal, float yVal, float dxVal, float dyVal, int healthVal); 
+        float x;
+        float y;
+        float dx;
+        float dy;
         int health;
-        SDL_Texture *texture;
-        virtual SDL_Texture* loadTexture(std::string filename);
-        virtual void draw(SDL_Texture* tex, int x, int y);
-        virtual void update();
+        SDL_Texture* texture;
+        void loadTexture(std::string filename);
+        void draw(SDL_Texture* tex, float x, float y);
+        virtual void update() {}
+        void print();
+        ~Entity();
     };
-
 }
 
 #endif

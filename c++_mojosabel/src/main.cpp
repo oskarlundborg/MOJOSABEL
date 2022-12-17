@@ -8,6 +8,9 @@
 #include "Canvas.h"
 #include "Player.h"
 #include "Constants.h"
+#include "Entity.h"
+#include "PlayerEntity.h"
+#include "BulletEntity.h"
 
 using namespace mojosabel;
 
@@ -45,15 +48,40 @@ int main(int argc, char* argv[])
 
     std::cout << "***main***" << std::endl;
 
+    if(sys.isWithinBounds(1, 1)){
+        std::cout << "In bounds" << std::endl;
+    }
+
+    if(sys.isWithinBounds(-1, -1)){
+        std::cout << "Out of bounds" << std::endl;
+    }
+
+    if(sys.isWithinBounds(1281, 721)){
+        std::cout << "Out of bounds" << std::endl;
+    }
+    
     Session ses;
 
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
     
-    Player* player = Player::getInstance(200, 200, 50, 50);
-    ses.add(player);
+    // Old Player object
+        // Player* player = Player::getInstance(200, 200, 50, 50);
+        // ses.add(player);
+        // player->loadTexture(constants::gResPath + "images/Spaceship.png");
+        // player->setSpeed(3);
+
+
+    PlayerEntity* player = new PlayerEntity(100, 100, 0, 0, 1, 3, 5);
+    std::cout << player->x << std::endl;
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
-    player->setSpeed(3);
+    ses.add(player);
+
+    BulletEntity* bullet = new BulletEntity(500, 500, 0, -16, 1);
+    bullet->loadTexture(constants::gResPath + "images/Bullet.png");
+    bullet->player = player;
+    ses.add(bullet);
+
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	ses.add(lbl);
