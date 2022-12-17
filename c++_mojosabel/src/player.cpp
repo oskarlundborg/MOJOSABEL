@@ -38,6 +38,8 @@ namespace mojosabel {
 
     void Player::moveRight(int dist) { rect.x += dist; }
 
+    void Player::fire() {};
+
     Player::~Player() { SDL_DestroyTexture(texture); }
 
 }

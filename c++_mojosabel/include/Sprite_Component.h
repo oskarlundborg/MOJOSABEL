@@ -11,9 +11,10 @@ namespace mojosabel {
     class Sprite_Component : public Component
     {
     private:
-        
         SDL_Texture* texture;
-        
+    public:
+        ~Sprite_Component();
+
     };
 }
 #endif
