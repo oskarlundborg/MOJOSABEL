@@ -11,16 +11,13 @@ namespace mojosabel {
         move();
         fire();
         draw(texture, x, y);
-        for(auto bullet : bullets){
-            bullet->update();
-        }
     }
     void PlayerEntity::move() 
     {
-        if(sys.keyboard[SDL_SCANCODE_W]) { moveUp(speed); }
-        if(sys.keyboard[SDL_SCANCODE_S]) { moveDown(speed); }
-        if(sys.keyboard[SDL_SCANCODE_A]) { moveLeft(speed); }
-        if(sys.keyboard[SDL_SCANCODE_D]) { moveRight(speed); }
+        if(sys.keyboard[SDL_SCANCODE_W]) { moveUp(-dy); }
+        if(sys.keyboard[SDL_SCANCODE_S]) { moveDown(dy); }
+        if(sys.keyboard[SDL_SCANCODE_A]) { moveLeft(-dx); }
+        if(sys.keyboard[SDL_SCANCODE_D]) { moveRight(dx); }
     }
 
     void PlayerEntity::moveUp(int speed) { y -= speed; }

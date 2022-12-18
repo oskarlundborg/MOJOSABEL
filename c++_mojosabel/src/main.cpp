@@ -48,15 +48,15 @@ int main(int argc, char* argv[])
 
     std::cout << "***main***" << std::endl;
 
-    if(sys.isWithinBounds(1, 1)){
+    if(sys.isWithinBounds((float)1, (float)1)){
         std::cout << "In bounds" << std::endl;
     }
 
-    if(sys.isWithinBounds(-1, -1)){
+    if(sys.isWithinBounds((float)-1, (float)-1)){
         std::cout << "Out of bounds" << std::endl;
     }
 
-    if(sys.isWithinBounds(1281, 721)){
+    if(sys.isWithinBounds((float)1281, (float)721)){
         std::cout << "Out of bounds" << std::endl;
     }
     
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
         // player->setSpeed(3);
 
 
-    PlayerEntity* player = new PlayerEntity(100, 100, 0, 0, 1, 3, 5);
+    PlayerEntity* player = new PlayerEntity(100, 100, 3, 3, 1, 5);
     std::cout << player->x << std::endl;
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
     ses.add(player);
