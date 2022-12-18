@@ -6,14 +6,20 @@
 
 namespace mojosabel {
 
+    Entity::Entity(float x, float y, int w, int h, int layer, std::string name) 
+        : xPos(x), yPos(y), width(w), height(h), layer(layer), name(name) 
+    {
+        //start();
+    } 
+        
     void Entity::loadTexture(std::string filename)
     {
         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
     }
 
-    void Entity::draw(SDL_Texture* tex, float x, float y)
+    void Entity::draw(float x, float y)
     {
-        if(!tex)
+        if(!texture)
         {
             std::cout << "Draw Error: No texture" << std::endl;
             return;
@@ -30,7 +36,28 @@ namespace mojosabel {
     void Entity::sneakyUpdate()
     {
         update();
+        draw(xPos, yPos);
     }
 
-    Entity::~Entity() { SDL_DestroyTexture(texture); }
+    void Entity::toggleCollision(bool toSet)
+    {
+        hasCollision = toSet;
+    }
+
+    void Entity::removeFromSession()
+    {
+        for (std::vector<Entity*>::iterator it = session->begin(); it != session->end(); ++it)
+        {
+            if (*it == this)
+            {
+                it = session->erase(it);
+            }
+        }
+    }
+
+    Entity::~Entity() 
+    { 
+        removeFromSession();
+        SDL_DestroyTexture(texture); 
+    }
 }

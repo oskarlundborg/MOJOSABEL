@@ -19,6 +19,7 @@ namespace mojosabel {
     void Session::add(Entity* entityToAdd)
     {
         entities.push_back(entityToAdd);
+        entityToAdd->setSession(&entities);
     }
 
     void Session::doKeyUp(SDL_KeyboardEvent *event)
@@ -101,7 +102,7 @@ namespace mojosabel {
             // Uppdaterar och ritar entities
             for (auto e : entities)
             {
-                e->update();
+                e->sneakyUpdate();
             }
 
             // Ritar sprite objekt

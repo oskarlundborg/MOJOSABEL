@@ -16,7 +16,7 @@ namespace mojosabel {
     private:
         //World world;
         long renderTime; //tiden det tog för förra framen att rendera
-        float remainder; //
+        float remainder; 
         Canvas *rootCanvas;
         std::vector<Sprite*> sprites;
         std::vector<Entity*> entities;

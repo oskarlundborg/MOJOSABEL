@@ -12,7 +12,7 @@ namespace mojosabel {
     private:
         int layer = 0;
         SDL_Rect* rect; 
-        std::vector<Component*> comps; //kanske map
+        //std::vector<Component*> comps; //kanske map
         
     protected:
 
@@ -22,7 +22,7 @@ namespace mojosabel {
         void doUpdate(); //kallar på update, automatiskt rendera vår image om vi har en, om gameobject flyttas osv
         void update(); //virtuell, 
         //void fixedUpdate() ?
-        void addComponent(Component* compToAdd);
+        //void addComponent(Component* compToAdd);
     };
 }
 
