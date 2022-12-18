@@ -43,11 +43,6 @@ namespace mojosabel {
     {
         return win;
     }
-
-    bool isWithinBounds(float x, float y)
-    {
-        return x > SCREEN_WIDTH || y > SCREEN_HEIGHT || x < 0 || y < 0;
-    }
     
     System sys;    
 }

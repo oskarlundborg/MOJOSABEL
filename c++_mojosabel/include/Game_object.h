@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <SDL2/SDL.h>
-#include "Component.h"
 
 
 namespace mojosabel {

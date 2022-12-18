@@ -6,15 +6,6 @@
 
 namespace mojosabel {
 
-    Entity::Entity(float xVal, float yVal, float dxVal, float dyVal, int healthVal)
-    {
-        x = xVal;
-        y = yVal;
-        dx = dxVal;
-        dy = dyVal;
-        health = healthVal;
-    }
-
     void Entity::loadTexture(std::string filename)
     {
         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
@@ -36,9 +27,9 @@ namespace mojosabel {
         SDL_RenderCopy(sys.getRen(), texture, NULL, &rect);
     }
 
-    void Entity::print()
+    void Entity::sneakyUpdate()
     {
-       std::cout  << "X: " << x << ", " << "Y: " << y << ", " << "DX: " << dx << ", " << "DY: " << dy << ", " << "Health: " << health << ", " << std::endl;
+        update();
     }
 
     Entity::~Entity() { SDL_DestroyTexture(texture); }

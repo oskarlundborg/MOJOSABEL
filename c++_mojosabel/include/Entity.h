@@ -9,18 +9,21 @@ namespace mojosabel {
     class Entity 
     {
     public:
-        Entity() : Entity(0, 0, 0, 0, 1) {}
-        Entity(float xVal, float yVal, float dxVal, float dyVal, int healthVal); 
-        float x;
-        float y;
-        float dx;
-        float dy;
-        int health;
+        float xPos;
+        float yPos;
+        int width;
+        int height;
+        int layer;
+        bool hasCollision = false;
+        std::string name;
         SDL_Texture* texture;
+        Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}
+        Entity(float x, float y, int w, int h, int layer, std::string name) 
+            : xPos(x), yPos(y), width(w), height(h), layer(layer), name(name) {} 
         void loadTexture(std::string filename);
         void draw(SDL_Texture* tex, float x, float y);
         virtual void update() {}
-        void print();
+        void sneakyUpdate();
         ~Entity();
     };
 }
