@@ -17,7 +17,7 @@ namespace mojosabel {
         void update();
         void fire();
         void mouseDown(SDL_Event event);
-        virtual ~Player_Entity();
+        virtual ~Player_Entity() {}
     };
 }
 #endif
