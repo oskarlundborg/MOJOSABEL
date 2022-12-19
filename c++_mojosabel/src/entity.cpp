@@ -58,6 +58,5 @@ namespace mojosabel {
     Entity::~Entity() 
     { 
         SDL_DestroyTexture(texture);
-        std::cout << "crying dying" << std::endl;
     }
 }

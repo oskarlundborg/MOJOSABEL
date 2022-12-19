@@ -32,7 +32,7 @@ namespace mojosabel {
         virtual void update() {}
         virtual void mouseUp(SDL_Event event) {}
         virtual void mouseDown(SDL_Event event) {}
-        ~Entity();
+        virtual ~Entity();
     };
 }
 
