@@ -39,25 +39,14 @@ namespace mojosabel {
         draw(xPos, yPos);
     }
 
-    void Entity::toggleCollision(bool toSet)
+    void Entity::setCollision(bool toSet)
     {
         hasCollision = toSet;
     }
 
-    void Entity::removeFromSession()
-    {
-        for (std::vector<Entity*>::iterator it = session->begin(); it != session->end(); ++it)
-        {
-            if (*it == this)
-            {
-                it = session->erase(it);
-            }
-        }
-    }
-
     Entity::~Entity() 
     { 
-        removeFromSession();
+        sessionRemoved->push_back(this);
         SDL_DestroyTexture(texture); 
     }
 }

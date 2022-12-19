@@ -19,13 +19,15 @@ namespace mojosabel {
         float remainder; 
         Canvas *rootCanvas;
         std::vector<Sprite*> sprites;
-        std::vector<Entity*> entities;
+        std::vector<Entity*> entities, addedEntities, removedEntities; 
         void doKeyUp(SDL_KeyboardEvent* event);
         void doKeyDown(SDL_KeyboardEvent* event);
     public:
         Session();
         void add(Sprite* spriteToAdd);
         void add(Entity* entityToAdd);
+        void remove(Entity* entityToRemove);
+        void remove(Sprite* spriteToAdd);
         Canvas* getRootCanvas() {return rootCanvas;};
         void CreateNewWorld(int levelCount);
         void capFrameRate(long *renderTime, float *remainder);

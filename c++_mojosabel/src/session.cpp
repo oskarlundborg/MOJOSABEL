@@ -16,11 +16,17 @@ namespace mojosabel {
     {
         sprites.push_back(spriteToAdd); 
     }
+
     void Session::add(Entity* entityToAdd)
     {
-        entities.push_back(entityToAdd);
-        entityToAdd->setSession(&entities);
+        addedEntities.push_back(entityToAdd); 
+        entityToAdd->setSession(&removedEntities, &addedEntities); 
     }
+
+    void Session::remove(Entity* entityToRemove)
+    {
+        removedEntities.push_back(entityToRemove); // göra en removed ses i entity?
+    } 
 
     void Session::doKeyUp(SDL_KeyboardEvent *event)
     {
@@ -79,11 +85,19 @@ namespace mojosabel {
                         {
                             s -> mouseDown(event);
                         }
+                        for (Entity* e : entities)
+                        {
+                            e -> mouseDown(event);
+                        }
                         break;
                     case SDL_MOUSEBUTTONUP:
                         for (Sprite* s : sprites)
                         {
                             s -> mouseUp(event);
+                        }
+                        for (Entity* e : entities)
+                        {
+                            e -> mouseUp(event);
                         }
                         break;
                     case SDL_KEYDOWN:
@@ -104,7 +118,29 @@ namespace mojosabel {
             {
                 e->sneakyUpdate();
             }
+ 
+            for (Entity* en : addedEntities)
+            {
+                entities.push_back(en);
+            }
+            addedEntities.clear();
 
+            for (Entity* e : removedEntities)
+            {
+                for (std::vector<Entity*>::iterator it = removedEntities.begin(); it != removedEntities.end();)
+                {
+                    if (*it == e)
+                    {
+                        it = removedEntities.erase(it);
+                    }
+                    else 
+                    {
+                        it++;
+                    }
+                }
+            }
+            removedEntities.clear();
+          
             // Ritar sprite objekt
             for (Sprite* s : sprites)
             {
