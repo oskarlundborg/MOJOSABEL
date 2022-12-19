@@ -6,8 +6,10 @@
 #include "Ui_sprite.h"
 #include "Ui_button.h"
 #include "Canvas.h"
-#include "Player.h"
+#include "Player_Entity.h"
 #include "Constants.h"
+#include "Entity.h"
+
 
 using namespace mojosabel;
 
@@ -42,17 +44,29 @@ class DecreaseButton : public Ui_button
 
 int main(int argc, char* argv[]) 
 {
+
     std::cout << "***main***" << std::endl;
 
+    // if(sys.isWithinBounds((float)1, (float)1)){
+    //     std::cout << "In bounds" << std::endl;
+    // }
+
+    // if(sys.isWithinBounds((float)-1, (float)-1)){
+    //     std::cout << "Out of bounds" << std::endl;
+    // }
+
+    // if(sys.isWithinBounds((float)1281, (float)721)){
+    //     std::cout << "Out of bounds" << std::endl;
+    // }
+    
     Session ses;
 
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
-    
-    Player* player = Player::getInstance(200, 200, 50, 50);
-    ses.add(player);
+
+    Player_Entity* player = new Player_Entity(100, 100, 0, 0, 0, "spaceship", 3);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
-    player->setSpeed(1);
+    ses.add(player);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	ses.add(lbl);
@@ -62,7 +76,7 @@ int main(int argc, char* argv[])
 
     Ui_button* b2 = new DecreaseButton(lbl);
     ses.add(b2);
-
+    
     ses.run();
 
     std::cout << "***done***" << std::endl;
