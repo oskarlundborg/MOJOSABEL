@@ -135,7 +135,6 @@ namespace mojosabel {
                     {
                         delete e;
                         it = entities.erase(it);
-                        // std::cout << "I killed someone" << std::endl;
                     }
                     else 
                     {

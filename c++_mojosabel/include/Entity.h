@@ -25,12 +25,14 @@ namespace mojosabel {
         void draw(float x, float y);
         void setCollision(bool toSet);
         void setSession(std::vector<Entity*>* sesRemoved, std::vector<Entity*>* sesAdded) {sessionRemoved = sesRemoved; sessionAdded = sesAdded;}
+        void sneakyUpdate();
+        void instantiate(Entity* entity);
+        void destroy();
         virtual void start() {}
         virtual void update() {}
-        void sneakyUpdate();
         virtual void mouseUp(SDL_Event event) {}
         virtual void mouseDown(SDL_Event event) {}
-        ~Entity();
+        virtual ~Entity();
     };
 }
 
