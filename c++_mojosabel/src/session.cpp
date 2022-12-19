@@ -14,13 +14,13 @@ namespace mojosabel {
 
     void Session::add(Sprite* spriteToAdd)
     {
-        sprites.push_back(spriteToAdd); 
+        sprites.push_back(spriteToAdd);
     }
 
     void Session::add(Entity* entityToAdd)
     {
         addedEntities.push_back(entityToAdd); 
-        entityToAdd->setSession(&removedEntities, &addedEntities); 
+        entityToAdd->setSession(&removedEntities, &addedEntities);
     }
 
     void Session::remove(Entity* entityToRemove)
@@ -114,24 +114,28 @@ namespace mojosabel {
             SDL_RenderClear(sys.getRen());
 
             // Uppdaterar och ritar entities
-            for (auto e : entities)
+            for (Entity* e : entities)
             {
                 e->sneakyUpdate();
             }
  
-            for (Entity* en : addedEntities)
+            for (Entity* e : addedEntities)
             {
-                entities.push_back(en);
+                entities.push_back(e);
             }
             addedEntities.clear();
+            
+            
 
             for (Entity* e : removedEntities)
             {
-                for (std::vector<Entity*>::iterator it = removedEntities.begin(); it != removedEntities.end();)
+                for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end();)
                 {
                     if (*it == e)
                     {
-                        it = removedEntities.erase(it);
+                        delete e;
+                        it = entities.erase(it);
+                        // std::cout << "I killed someone" << std::endl;
                     }
                     else 
                     {
@@ -140,6 +144,7 @@ namespace mojosabel {
                 }
             }
             removedEntities.clear();
+            
           
             // Ritar sprite objekt
             for (Sprite* s : sprites)

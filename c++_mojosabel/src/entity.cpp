@@ -46,7 +46,7 @@ namespace mojosabel {
 
     Entity::~Entity() 
     { 
-        sessionRemoved->push_back(this);
         SDL_DestroyTexture(texture); 
+        std::cout << "im dead" << std::endl;
     }
 }

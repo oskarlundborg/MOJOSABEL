@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Player_Entity.h"
 #include "Bullet_Entity.h"
 #include "System.h"
@@ -39,5 +40,6 @@ namespace mojosabel {
         Bullet_Entity *bullet = new Bullet_Entity(xPos, yPos, 0, 0, 0, "bullet", 4);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
         sessionAdded->push_back(bullet);
+        bullet->setSession(sessionRemoved, sessionAdded);
     }
 }

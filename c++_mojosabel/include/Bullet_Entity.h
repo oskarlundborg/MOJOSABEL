@@ -12,7 +12,7 @@ namespace mojosabel {
         Bullet_Entity() : Entity() { speed = 0;}
         Bullet_Entity(float x, float y, int w, int h, int layer, std::string name, float speed);
         int speed;
-        
+        bool isDead = false;
         void update();
         void move();
     };

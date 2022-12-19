@@ -24,7 +24,7 @@ namespace mojosabel {
         void loadTexture(std::string filename);
         void draw(float x, float y);
         void setCollision(bool toSet);
-        void setSession(std::vector<Entity*> *sesRemoved, std::vector<Entity*> *sesAdded) {sessionRemoved = sesRemoved; sessionAdded = sesAdded;}
+        void setSession(std::vector<Entity*>* sesRemoved, std::vector<Entity*>* sesAdded) {sessionRemoved = sesRemoved; sessionAdded = sesAdded;}
         virtual void start() {}
         virtual void update() {}
         void sneakyUpdate();

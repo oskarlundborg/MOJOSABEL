@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Bullet_Entity.h"
 #include "System.h"
 
@@ -13,8 +14,10 @@ namespace mojosabel {
     void Bullet_Entity::update()
     {
         move();
-        if (sys.isOutOfBounds(xPos, yPos))
+
+        if (sys.isOutOfBounds(xPos, yPos) && isDead == false)
         {
+            isDead = true;
             sessionRemoved->push_back(this);
         }
     }
