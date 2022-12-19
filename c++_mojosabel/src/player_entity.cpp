@@ -39,7 +39,6 @@ namespace mojosabel {
     {
         Bullet_Entity *bullet = new Bullet_Entity(xPos, yPos, 0, 0, 0, "bullet", 4);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
-        sessionAdded->push_back(bullet);
-        bullet->setSession(sessionRemoved, sessionAdded);
+        instantiate(bullet);
     }
 }

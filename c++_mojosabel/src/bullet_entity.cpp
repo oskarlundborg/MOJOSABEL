@@ -15,10 +15,9 @@ namespace mojosabel {
     {
         move();
 
-        if (sys.isOutOfBounds(xPos, yPos) && isDead == false)
+        if (sys.isOutOfBounds(xPos, yPos))
         {
-            isDead = true;
-            sessionRemoved->push_back(this);
+            destroy();
         }
     }
 

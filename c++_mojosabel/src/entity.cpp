@@ -44,9 +44,20 @@ namespace mojosabel {
         hasCollision = toSet;
     }
 
+    void Entity::instantiate(Entity* entity)
+    {
+        sessionAdded->push_back(entity);
+        entity->setSession(sessionRemoved, sessionAdded);
+    }
+
+    void Entity::destroy()
+    {
+        sessionRemoved->push_back(this);
+    }
+
     Entity::~Entity() 
     { 
-        SDL_DestroyTexture(texture); 
-        std::cout << "im dead" << std::endl;
+        SDL_DestroyTexture(texture);
+        std::cout << "crying dying" << std::endl;
     }
 }
