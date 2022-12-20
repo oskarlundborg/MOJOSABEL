@@ -4,14 +4,7 @@
 
 namespace mojosabel {
 
-    Canvas::Canvas() 
-    {
-        xPos = 0;
-        yPos = 0;
-
-        width = SDL_GetWindowSurface(sys.getWin()) -> w;
-        height = SDL_GetWindowSurface(sys.getWin()) -> h;
-    }
+    
 
     void Canvas::removeCanvas(Canvas* canvasToRemove)
     {

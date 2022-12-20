@@ -1,28 +1,29 @@
 #include <iostream>
-#include "Player_Entity.h"
-#include "Bullet_Entity.h"
+#include "Player.h"
+#include "Bullet.h"
 #include "System.h"
 #include "Constants.h"
 
 namespace mojosabel {
 
-    Player_Entity::Player_Entity() : Entity()
+    Player::Player() : GameObject()
     {
         health = 0;
         speed = 0;
     }
 
-    Player_Entity::Player_Entity(float x, float y, int w, int h, int layer, std::string name, float sp)
-        : Entity (x, y, w, h, layer, name)
+    Player::Player(float x, float y, int w, int h, int layer, std::string name, float sp)
+        : GameObject (x, y, w, h, layer, name)
     {
         speed = sp;
     }
-
-    void Player_Entity::update()
+    
+    void Player::update()
     {
         move();
     }
-    void Player_Entity::move()
+
+    void Player::move()
     {
         if(sys.keyboard[SDL_SCANCODE_W]) { yPos -= speed; }
         if(sys.keyboard[SDL_SCANCODE_S]) { yPos += speed; }
@@ -30,14 +31,14 @@ namespace mojosabel {
         if(sys.keyboard[SDL_SCANCODE_D]) { xPos += speed; }
     }
 
-    void Player_Entity::mouseDown(SDL_Event event)
+    void Player::mouseDown(SDL_Event event)
     {
         fire();
     }
 
-    void Player_Entity::fire()
+    void Player::fire()
     {
-        Bullet_Entity *bullet = new Bullet_Entity(xPos, yPos, 0, 0, 0, "bullet", 4);
+        Bullet *bullet = new Bullet(xPos, yPos, 0, 0, 0, "bullet", 4);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
         instantiate(bullet);
     }
