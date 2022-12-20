@@ -12,7 +12,7 @@ namespace mojosabel {
         float speed;
     public:
         Player();
-        Player(float x, float y, int w, int h, int layer, std::string name, float speed);
+        Player(float x, float y, int w, int h, int layer, std::string tag, float speed);
         void move();
         void update();
         void fire();

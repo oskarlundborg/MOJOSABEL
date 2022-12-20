@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Session.h"
 
 namespace mojosabel
 {
@@ -10,8 +11,8 @@ namespace mojosabel
         }
     }
 
-    void GameObject::destroy()
+    void GameObject::destroy(Entity* entity)
     {
-        ses.remove(this);
+        ses.remove(entity);
     }
 } 

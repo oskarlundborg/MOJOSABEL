@@ -2,24 +2,20 @@
 #define GAMEOBJECT_H
 
 #include "Entity.h"
-#include "Session.h"
 
-namespace mojosabel{
+namespace mojosabel {
 
     class GameObject : public Entity
     {
     private:
-
+         
     public:
-        GameObject() : Entity(0, 0, 0, 0, 0, "unkown") {}
-        GameObject(float x, float y, int w, int h, int layer, std::string name) 
-            : Entity(x, y, w, h, layer, name) {}
+        GameObject() : Entity(0, 0, 0, 0, 0, "Unkown") {}
+        GameObject(float x, float y, int w, int h, int layer, std::string tag) 
+            : Entity(x, y, w, h, layer, tag) {}
         void instantiate(Entity* entity);
-        void destroy();
+        void destroy(Entity* entity);
     };
 }
-
-
-
 
 #endif

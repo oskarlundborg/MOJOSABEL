@@ -6,8 +6,8 @@
 
 namespace mojosabel {
 
-    Entity::Entity(float x, float y, int w, int h, int layer, std::string name) 
-        : xPos(x), yPos(y), width(w), height(h), layer(layer), name(name) 
+    Entity::Entity(float x, float y, int w, int h, int layer, std::string tag) 
+        : xPos(x), yPos(y), width(w), height(h), layer(layer), tag(tag) 
     {
         //start();
     } 
@@ -39,7 +39,7 @@ namespace mojosabel {
         draw(xPos, yPos);
     }
 
-    void Entity::setCollision(bool toSet)
+     void Entity::setCollision(bool toSet)
     {
         hasCollision = toSet;
     }

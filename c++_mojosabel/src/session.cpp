@@ -1,7 +1,9 @@
 #include <iostream>
+#include <algorithm>
 #include <SDL2/SDL.h>
 #include "Session.h"
 #include "System.h"
+#include "Collision.h"
 
 namespace mojosabel {
 
@@ -64,6 +66,41 @@ namespace mojosabel {
         *renderTime = SDL_GetTicks();
     }
 
+    bool Session::entityExists(Entity* entity)
+    {
+        for (Entity* e : entities)
+        {
+            if (e == entity) { return true; }
+        }
+        return false;
+    }
+
+    void Session::checkCollision(Entity* entityToCheck)
+    {
+        if (!entityToCheck->hasCollision) { return; }
+        for (Entity* entity : entities)
+        {
+            if (entity != entityToCheck && entity->hasCollision)
+            {
+                if (checkHitbox(entityToCheck, entity))
+                {
+                    Collision<Entity> col = Collision(entity, entity->tag);
+                    entityToCheck->onCollision(col);
+                }
+            }
+        }
+    }
+
+    bool Session::checkHitbox(Entity* e1, Entity* e2)
+    {
+        if (std::max(e1->xPos, e2->xPos) < std::min(e1->xPos + e1->width, e2->xPos, e2->width) && (std::max(e1->yPos, e2->yPos) < std::min(e1->yPos + e1->height, e2->yPos + e2->height)))
+        {
+            return true;
+        }
+        return false;
+    }
+
+
     void Session::run()
     {
         renderTime = SDL_GetTicks();
@@ -116,6 +153,7 @@ namespace mojosabel {
             for (Entity* e : entities)
             {
                 e->sneakyUpdate();
+                checkCollision(e);
             }
  
             for (Entity* e : addedEntities)
