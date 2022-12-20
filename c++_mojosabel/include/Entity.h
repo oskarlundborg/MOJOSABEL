@@ -16,7 +16,8 @@ namespace mojosabel {
         int height;
         int layer;
         bool hasCollision = false;
-        std::vector<Entity*> *sessionRemoved, *sessionAdded;
+        std::vector<Entity*> *sessionRemoved, *sessionAdded, *allEntities;
+        //void (*instantiate)(Entity* entity); 
         std::string name;
         SDL_Texture* texture;
         Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}

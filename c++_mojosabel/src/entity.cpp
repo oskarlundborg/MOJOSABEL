@@ -46,8 +46,11 @@ namespace mojosabel {
 
     void Entity::instantiate(Entity* entity)
     {
-        sessionAdded->push_back(entity);
-        entity->setSession(sessionRemoved, sessionAdded);
+        if (entity != this)
+        {
+            sessionAdded->push_back(entity);
+            entity->setSession(sessionRemoved, sessionAdded);
+        }
     }
 
     void Entity::destroy()
