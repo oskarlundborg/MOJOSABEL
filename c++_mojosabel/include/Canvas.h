@@ -12,12 +12,12 @@ namespace mojosabel {
     private:
         int xPos;
         int yPos;
-        int width = 0;
-        int height = 0;
+        int width;
+        int height;
         std::vector<Canvas*> canvases;
         std::vector<Ui_sprite*> uiSprites;
     public:
-        Canvas();
+        Canvas() : Canvas(0, 0, 0, 0) {}
         Canvas(int x, int y, int w, int h) { xPos = x, yPos = y, width = w, height = h; }
         int x() { return xPos; }
         int y() { return yPos; }

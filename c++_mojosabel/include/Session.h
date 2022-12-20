@@ -24,16 +24,19 @@ namespace mojosabel {
         void doKeyDown(SDL_KeyboardEvent* event);
     public:
         Session();
-        void add(Sprite* spriteToAdd);
+        void addSprite(Sprite* spriteToAdd);
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
-        void remove(Sprite* spriteToAdd);
+        void removeSprite(Sprite* spriteToAdd); //no working
         Canvas* getRootCanvas() {return rootCanvas;};
         void CreateNewWorld(int levelCount);
         void capFrameRate(long *renderTime, float *remainder);
         void run();
         ~Session();
     };
+
+    extern Session ses;
+    
 }
 
 #endif

@@ -12,15 +12,14 @@ namespace mojosabel {
         rootCanvas = new Canvas();
     }
 
-    void Session::add(Sprite* spriteToAdd)
+    void Session::addSprite(Sprite* spriteToAdd)
     {
         sprites.push_back(spriteToAdd);
     }
 
     void Session::add(Entity* entityToAdd)
     {
-        addedEntities.push_back(entityToAdd); 
-        entityToAdd->setSession(&removedEntities, &addedEntities);
+        addedEntities.push_back(entityToAdd);
     }
 
     void Session::remove(Entity* entityToRemove)
@@ -156,7 +155,7 @@ namespace mojosabel {
         }
     }
 
-    Session::~Session(){
-        
-    }
+    Session::~Session(){}
+
+    Session ses;
 }

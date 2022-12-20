@@ -16,7 +16,7 @@ namespace mojosabel {
         int height;
         int layer;
         bool hasCollision = false;
-        std::vector<Entity*> *sessionRemoved, *sessionAdded;
+        std::vector<Entity*> *sessionRemoved, *sessionAdded, *allEntities;
         std::string name;
         SDL_Texture* texture;
         Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}
@@ -24,10 +24,7 @@ namespace mojosabel {
         void loadTexture(std::string filename);
         void draw(float x, float y);
         void setCollision(bool toSet);
-        void setSession(std::vector<Entity*>* sesRemoved, std::vector<Entity*>* sesAdded) {sessionRemoved = sesRemoved; sessionAdded = sesAdded;}
         void sneakyUpdate();
-        void instantiate(Entity* entity);
-        void destroy();
         virtual void start() {}
         virtual void update() {}
         virtual void mouseUp(SDL_Event event) {}
