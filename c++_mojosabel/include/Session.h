@@ -24,17 +24,22 @@ namespace mojosabel {
         void doKeyDown(SDL_KeyboardEvent* event);
     public:
         Session();
+        bool entityExists(Entity* entity); //loopa genom alla entities, om en entity är samma returnera true, annars returnera false efter loopen
+        bool checkCollision(SDL_Rect rect1, SDL_Rect rect2);
+        bool checkColliders(SDL_Rect rectToCheck, std::vector<Collider>& colliders);
+        void checkAllCollisions(Entity* entity); // går igenom alla entities och kollar om det objektet kolliderar med något av objekten 
         void addSprite(Sprite* spriteToAdd);
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
         void removeSprite(Sprite* spriteToAdd); //no working
-        Canvas* getRootCanvas() {return rootCanvas;};
-        void CreateNewWorld(int levelCount);
+        void createNewWorld(int levelCount);
         void capFrameRate(long *renderTime, float *remainder);
         void run();
         ~Session();
+        Canvas* getRootCanvas() {return rootCanvas;};
     };
 
+    // struct collision som innehåller en pointer/namnet till det objektet kolliderar med
     extern Session ses;
     
 }

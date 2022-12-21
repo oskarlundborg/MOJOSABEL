@@ -12,7 +12,7 @@ namespace mojosabel {
         speed = 0;
     }
 
-    Player::Player(float x, float y, int w, int h, int layer, std::string name, float sp)
+    Player::Player(int x, int y, int w, int h, int layer, std::string name, int sp)
         : GameObject (x, y, w, h, layer, name)
     {
         speed = sp;
@@ -25,10 +25,10 @@ namespace mojosabel {
 
     void Player::move()
     {
-        if(sys.keyboard[SDL_SCANCODE_W]) { yPos -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_S]) { yPos += speed; }
-        if(sys.keyboard[SDL_SCANCODE_A]) { xPos -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_D]) { xPos += speed; }
+        if(sys.keyboard[SDL_SCANCODE_W]) { rect.y -= speed; }
+        if(sys.keyboard[SDL_SCANCODE_S]) { rect.y += speed; }
+        if(sys.keyboard[SDL_SCANCODE_A]) { rect.x -= speed; }
+        if(sys.keyboard[SDL_SCANCODE_D]) { rect.x += speed; }
     }
 
     void Player::mouseDown(SDL_Event event)
@@ -38,8 +38,12 @@ namespace mojosabel {
 
     void Player::fire()
     {
-        Bullet *bullet = new Bullet(xPos, yPos, 0, 0, 0, "bullet", 4);
+        Bullet *bullet = new Bullet(rect.x, rect.y, 0, 0, 0, "Bullet", 4);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
+        bullet->resizeToImage();
+        bullet->setCollision(true);
         instantiate(bullet);
+        //hasColliders();
+        
     }
 }

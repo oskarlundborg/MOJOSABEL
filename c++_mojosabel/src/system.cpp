@@ -44,7 +44,7 @@ namespace mojosabel {
         return win;
     }
 
-    bool System::isOutOfBounds(float x, float y)
+    bool System::isOutOfBounds(int x, int y)
     {
         if (x > SCREEN_WIDTH || x < 0 || y > SCREEN_HEIGHT || y < 0)
         {

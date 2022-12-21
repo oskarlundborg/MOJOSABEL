@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Constants.h"
 #include "Entity.h"
+#include "Enemy.h"
 
 
 using namespace mojosabel;
@@ -50,9 +51,15 @@ int main(int argc, char* argv[])
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
 
-    Player* player = new Player(100, 100, 0, 0, 0, "spaceship", 3);
+    Player* player = new Player(100, 100, 32, 32, 0, "Player", 3);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
     ses.add(player);
+
+    Enemy* enemy = new Enemy(500, 500, 32, 32, 0, "Enemy", 1);
+    enemy->loadTexture(constants::gResPath + "images/Spaceship.png");
+    enemy->setCollision(true);
+    enemy->addCollider(1, 1, 5, 5);
+    ses.add(enemy);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	ses.addSprite(lbl);

@@ -4,29 +4,34 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <vector>
+#include "Collision.h"
+#include "Collider.h"
 
 namespace mojosabel {
 
     class Entity 
     {
     public:
-        float xPos;
-        float yPos;
-        int width;
-        int height;
+        SDL_Rect rect;
         int layer;
         bool hasCollision = false;
-        std::vector<Entity*> *sessionRemoved, *sessionAdded, *allEntities;
-        std::string name;
+        std::string tag;
         SDL_Texture* texture;
+        std::vector<Collider> colliders;
         Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}
-        Entity(float x, float y, int w, int h, int layer, std::string name);
+        Entity(int xPos, int yPos, int width, int height, int layer, std::string tag);
+        bool hasColliders();
+        void addCollider(int xOffset, int yOffset, int colWidth, int colHight);
+        void adjustColliders();
+        std::vector<Collider>& getColliders();
         void loadTexture(std::string filename);
-        void draw(float x, float y);
+        void resizeToImage();
+        void draw();
         void setCollision(bool toSet);
         void sneakyUpdate();
         virtual void start() {}
         virtual void update() {}
+        virtual void onCollision(Collision<Entity> collision) {} 
         virtual void mouseUp(SDL_Event event) {}
         virtual void mouseDown(SDL_Event event) {}
         virtual ~Entity();

@@ -9,10 +9,10 @@ namespace mojosabel {
     {
     private:
         int health;
-        float speed;
+        int speed;
     public:
         Player();
-        Player(float x, float y, int w, int h, int layer, std::string name, float speed);
+        Player(int x, int y, int w, int h, int layer, std::string tag, int speed);
         void move();
         void update();
         void fire();

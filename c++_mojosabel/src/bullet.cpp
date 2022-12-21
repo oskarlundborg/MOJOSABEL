@@ -5,8 +5,8 @@
 
 namespace mojosabel {
     
-    Bullet::Bullet(float x, float y, int w, int h, int layer, std::string name, float s)
-        : GameObject(x, y, w, h, layer, name)
+    Bullet::Bullet(int x, int y, int w, int h, int layer, std::string tag, int s)
+        : GameObject(x, y, w, h, layer, tag)
     {
         speed = s;
     }
@@ -15,14 +15,23 @@ namespace mojosabel {
     {
         move();
 
-        if (sys.isOutOfBounds(xPos, yPos))
+        if (sys.isOutOfBounds(rect.x, rect.y))
         {
-            destroy();
+            destroy(this);
         }
     }
 
     void Bullet::move()
     {
-        yPos -= speed;
+        rect.y -= speed;
+    }
+
+    void Bullet::onCollision(Collision<Entity> collision)
+    {
+        if (collision.tag == "Enemy") 
+        { 
+            std::cout << "hit enemy" << std::endl; 
+            destroy(collision.object);
+        }
     }
 }

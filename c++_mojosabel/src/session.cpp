@@ -1,7 +1,9 @@
 #include <iostream>
+#include <algorithm>
 #include <SDL2/SDL.h>
 #include "Session.h"
 #include "System.h"
+#include "Collision.h"
 
 namespace mojosabel {
 
@@ -64,6 +66,101 @@ namespace mojosabel {
         *renderTime = SDL_GetTicks();
     }
 
+    bool Session::entityExists(Entity* entity)
+    {
+        for (Entity* e : entities)
+        {
+            if (e == entity) { return true; }
+        }
+        return false;
+    }
+
+    void Session::checkAllCollisions(Entity* entityToCheck)
+    { 
+        if (!entityToCheck->hasCollision) { return; }
+        
+        for (Entity* entity : entities) // för varje entities i sessions vec
+        {
+            if (entity != entityToCheck && entity->hasCollision) // om entityn vi är på inte är det vi vill kolla och har collision
+            {
+                if (checkCollision(entityToCheck->rect, entity->rect)) // kollar först om objektens rects kolliderar
+                {   
+                    if (entityToCheck->hasColliders() && entity->hasColliders()) // om båda har colliders: jämför båda objektens colliders med varje av den andres colliders
+                    {
+                       for (Collider c : entityToCheck->getColliders()) 
+                       {
+                            if (checkColliders(c.rect, entity->getColliders())) // om någon av colliders kolliderar: skapa en collision och kör on collision i objektet vi kollar
+                            {
+                                Collision<Entity> col = Collision(entity, entity->tag);
+                                entityToCheck->onCollision(col);
+                            } 
+                       }
+                    }
+                    else if (!entityToCheck->hasColliders() && entity->hasColliders()) // om objektet vi är på har fler colliders: kolla objektet vi vill kollas rect med varje collider i objektet vi är på
+                    {
+                        if (checkColliders(entityToCheck->rect, entity->getColliders())) 
+                        {
+                            Collision<Entity> col = Collision(entity, entity->tag);
+                            entityToCheck->onCollision(col);
+                        }
+                    }
+                    else if (entityToCheck->hasColliders() && !entity->hasColliders()) // om objektet vi vill kolla har fler colliders men objektet vi är på inte har det, jämför 
+                    {
+                        if (checkColliders(entity->rect, entityToCheck->getColliders()))
+                        {
+                            Collision<Entity> col = Collision(entity, entity->tag);
+                            entityToCheck->onCollision(col);
+                        }
+                    }
+                    else 
+                    {
+                        Collision<Entity> col = Collision(entity, entity->tag);
+                        entityToCheck->onCollision(col);
+                    }
+                }
+            }
+        }
+    }
+
+    bool Session::checkColliders(SDL_Rect rectToCheck, std::vector<Collider>& colliders)
+    {
+        for (Collider c : colliders)
+        {
+            if (checkCollision(rectToCheck, c.rect))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool Session::checkCollision(SDL_Rect rect1, SDL_Rect rect2)
+    {
+        float rect1Left, rect2Left, rect1Right, rect2Right, rect1Top, rect2Top, rect1Bottom, rect2Bottom;
+
+        // Calculate rect1 sides
+        rect1Left = rect1.x;
+        rect1Right = rect1.x + rect1.w;
+        rect1Top = rect1.y;
+        rect1Bottom = rect1.y + rect1.h;
+
+        //Calculate rect2 sides
+        rect2Left = rect2.x;
+        rect2Right = rect2.x + rect2.w;
+        rect2Top = rect2.y;
+        rect2Bottom = rect2.y + rect2.h;
+
+        //If any side from rect1 are outsied of rect2
+        if (rect1Bottom <= rect2Top) { return false; }
+        if (rect1Top >= rect2Bottom) { return false; }
+        if (rect1Right <= rect2Left) { return false; }
+        if (rect1Left >= rect2Right) { return false; }
+        
+        // if none are 
+        return true;
+    }
+
+
     void Session::run()
     {
         renderTime = SDL_GetTicks();
@@ -116,6 +213,7 @@ namespace mojosabel {
             for (Entity* e : entities)
             {
                 e->sneakyUpdate();
+                checkAllCollisions(e);
             }
  
             for (Entity* e : addedEntities)
