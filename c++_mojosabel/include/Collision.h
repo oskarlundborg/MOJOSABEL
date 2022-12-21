@@ -7,9 +7,9 @@ namespace mojosabel {
     class Collision
     {
     public:
+        T* object;
         const std::string tag;
-        T* t;
-        Collision(T* t, std::string tag) : t(t), tag(tag) {}
+        Collision(T* object, std::string tag) : object(object), tag(tag) {}
     };
 }
 

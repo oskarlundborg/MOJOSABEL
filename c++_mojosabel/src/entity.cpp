@@ -6,10 +6,13 @@
 
 namespace mojosabel {
 
-    Entity::Entity(float x, float y, int w, int h, int layer, std::string tag) 
-        : xPos(x), yPos(y), width(w), height(h), layer(layer), tag(tag) 
+    Entity::Entity(int xPos, int yPos, int width, int height, int layer, std::string tag) 
+        : layer(layer), tag(tag) 
     {
-        //start();
+        rect.x = xPos;
+        rect.y = yPos;
+        rect.w = width;
+        rect.h = height;
     } 
         
     void Entity::loadTexture(std::string filename)
@@ -17,31 +20,55 @@ namespace mojosabel {
         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
     }
 
-    void Entity::draw(float x, float y)
+    void Entity::resizeToImage()
+    {
+        SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
+    }
+
+    void Entity::draw()
     {
         if(!texture)
         {
             std::cout << "Draw Error: No texture" << std::endl;
             return;
         }
-        SDL_Rect rect;
-
-        rect.x = (int)x;
-        rect.y = (int)y;
-
-        SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
         SDL_RenderCopy(sys.getRen(), texture, NULL, &rect);
     }
 
     void Entity::sneakyUpdate()
     {
         update();
-        draw(xPos, yPos);
+        draw();
+        adjustColliders();
     }
 
      void Entity::setCollision(bool toSet)
     {
         hasCollision = toSet;
+    }
+
+    bool Entity::hasColliders()
+    {
+        return (colliders.size());
+    }
+    
+    void Entity::addCollider(int xOffset, int yOffset, int colWidth, int colHight)
+    {
+        Collider collider = Collider(rect.x, rect.y, xOffset, yOffset, colWidth, colHight);
+        colliders.push_back(collider);
+    }
+    
+    void Entity::adjustColliders()
+    {
+        for (Collider c : colliders)
+        {
+           c.shiftPosition(rect.x, rect.y);
+        }
+    }
+    
+    std::vector<Collider>& Entity::getColliders()
+    {
+        return colliders;
     }
 
     Entity::~Entity() 

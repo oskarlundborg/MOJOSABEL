@@ -24,7 +24,7 @@ namespace mojosabel
         TTF_Font* getFont() const;
         SDL_Window* getWin() const;
         int keyboard[MAX_KEYBOARD_KEYS] = {0};
-        bool isOutOfBounds(float x, float y);
+        bool isOutOfBounds(int x, int y);
     };
 
     extern System sys;

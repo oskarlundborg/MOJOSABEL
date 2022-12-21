@@ -25,8 +25,9 @@ namespace mojosabel {
     public:
         Session();
         bool entityExists(Entity* entity); //loopa genom alla entities, om en entity är samma returnera true, annars returnera false efter loopen
-        bool checkHitbox(Entity* e1, Entity* e2);
-        void checkCollision(Entity* entity); // går igenom alla entities och kollar om det objektet kolliderar med något av objekten 
+        bool checkCollision(SDL_Rect rect1, SDL_Rect rect2);
+        bool checkColliders(SDL_Rect rectToCheck, std::vector<Collider>& colliders);
+        void checkAllCollisions(Entity* entity); // går igenom alla entities och kollar om det objektet kolliderar med något av objekten 
         void addSprite(Sprite* spriteToAdd);
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);

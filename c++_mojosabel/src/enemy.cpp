@@ -9,7 +9,7 @@ namespace mojosabel {
         speed = 0;
     }
 
-    Enemy::Enemy(float x, float y, int w, int h, int layer, std::string name, float sp)
+    Enemy::Enemy(int x, int y, int w, int h, int layer, std::string name, int sp)
         : GameObject (x, y, w, h, layer, name)
     {
         speed = sp;
@@ -22,11 +22,11 @@ namespace mojosabel {
 
     void Enemy::move()
     {
-        yPos += speed;
+        //yPos += speed;
     }
 
-    void Enemy::onCollision(Collision<Entity> other)
+    void Enemy::onCollision(Collision<Entity> collision)
     {
-        if (other.tag == "Bullet") { std::cout << "enemy hit" << std::endl; }
+        //if (collision.tag == "Bullet") { destroy(this); }
     }
 }

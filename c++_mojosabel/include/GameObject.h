@@ -11,7 +11,7 @@ namespace mojosabel {
          
     public:
         GameObject() : Entity(0, 0, 0, 0, 0, "Unkown") {}
-        GameObject(float x, float y, int w, int h, int layer, std::string tag) 
+        GameObject(int x, int y, int w, int h, int layer, std::string tag) 
             : Entity(x, y, w, h, layer, tag) {}
         void instantiate(Entity* entity);
         void destroy(Entity* entity);

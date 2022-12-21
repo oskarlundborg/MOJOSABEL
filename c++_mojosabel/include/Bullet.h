@@ -11,10 +11,11 @@ namespace mojosabel {
         
     public:
         Bullet() : GameObject() { speed = 0; }
-        Bullet(float x, float y, int w, int h, int layer, std::string tag, float speed);
+        Bullet(int x, int y, int w, int h, int layer, std::string tag, int speed);
         int speed;
         void update();
         void move();
+        void onCollision(Collision<Entity> collision);
     };
 }
 #endif

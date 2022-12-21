@@ -11,8 +11,8 @@ namespace mojosabel {
         int health;
         int speed;
         Enemy();
-        Enemy(float x, float y, int w, int h, int layer, std::string name, float speed);
-        void onCollision(Collision<Entity> other);
+        Enemy(int x, int y, int w, int h, int layer, std::string name, int speed);
+        void onCollision(Collision<Entity> collision);
         void update();
         void move();
     };
