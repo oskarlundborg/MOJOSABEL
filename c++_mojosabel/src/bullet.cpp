@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Bullet.h"
 #include "System.h"
+#include "Session.h"
 
 
 namespace mojosabel {
@@ -9,6 +10,7 @@ namespace mojosabel {
         : GameObject(x, y, w, h, layer, tag)
     {
         speed = s;
+        findClosestEnemy();
     }
 
     void Bullet::update()
@@ -23,7 +25,13 @@ namespace mojosabel {
 
     void Bullet::move()
     {
-        rect.y -= speed;
+        setPosition(position().moveTowards(target, speed));
+    }
+
+    void Bullet::findClosestEnemy()
+    {
+        
+        target = ses.findEntity("Enemy")->position();
     }
 
     void Bullet::onCollision(Collision<Entity> collision)
@@ -32,6 +40,7 @@ namespace mojosabel {
         { 
             std::cout << "hit enemy" << std::endl; 
             destroy(collision.object);
+            destroy(this);
         }
     }
 }

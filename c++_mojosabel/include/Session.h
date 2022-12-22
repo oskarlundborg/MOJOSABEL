@@ -37,6 +37,7 @@ namespace mojosabel {
         void run();
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};
+        Entity* findEntity(std::string name);
     };
 
     // struct collision som innehåller en pointer/namnet till det objektet kolliderar med

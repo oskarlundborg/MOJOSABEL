@@ -27,6 +27,6 @@ namespace mojosabel {
 
     void Enemy::onCollision(Collision<Entity> collision)
     {
-        //if (collision.tag == "Bullet") { destroy(this); }
+        if (collision.tag == "Bullet") { destroy(this); }
     }
 }

@@ -58,7 +58,6 @@ int main(int argc, char* argv[])
     Enemy* enemy = new Enemy(500, 500, 32, 32, 0, "Enemy", 1);
     enemy->loadTexture(constants::gResPath + "images/Spaceship.png");
     enemy->setCollision(true);
-    enemy->addCollider(1, 1, 5, 5);
     ses.add(enemy);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");

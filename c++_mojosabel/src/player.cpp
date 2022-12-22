@@ -38,12 +38,11 @@ namespace mojosabel {
 
     void Player::fire()
     {
-        Bullet *bullet = new Bullet(rect.x, rect.y, 0, 0, 0, "Bullet", 4);
+        Bullet *bullet = new Bullet(rect.x, rect.y, 0, 0, 0, "Bullet", 30);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
         bullet->resizeToImage();
         bullet->setCollision(true);
         instantiate(bullet);
         //hasColliders();
-        
     }
 }
