@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <vector>
+
 #include "Collision.h"
 #include "Collider.h"
 
@@ -20,6 +21,7 @@ namespace mojosabel {
         std::vector<Collider> colliders;
         Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}
         Entity(int xPos, int yPos, int width, int height, int layer, std::string tag);
+        void setCollision(bool toSet);
         bool hasColliders();
         void addCollider(int xOffset, int yOffset, int colWidth, int colHight);
         void adjustColliders();
@@ -27,7 +29,6 @@ namespace mojosabel {
         void loadTexture(std::string filename);
         void resizeToImage();
         void draw();
-        void setCollision(bool toSet);
         void sneakyUpdate();
         virtual void start() {}
         virtual void update() {}
