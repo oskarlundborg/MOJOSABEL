@@ -1,8 +1,6 @@
 // #ifndef LEVEL_H
 // #define LEVEL_H
 
-// #include "Tile.h"
-// #include "Free_object.h"
 
 // namespace mojosabel {
 //     class Level {

@@ -7,6 +7,7 @@
 
 #include "Collision.h"
 #include "Collider.h"
+#include "Vector2.h"
 
 namespace mojosabel {
 
@@ -26,6 +27,8 @@ namespace mojosabel {
         void addCollider(int xOffset, int yOffset, int colWidth, int colHight);
         void adjustColliders();
         std::vector<Collider>& getColliders();
+        Vector2 position();
+        void setPosition(Vector2 vecToSet);
         void loadTexture(std::string filename);
         void resizeToImage();
         void draw();

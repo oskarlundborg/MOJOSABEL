@@ -75,6 +75,15 @@ namespace mojosabel {
         return false;
     }
 
+    Entity* Session::findEntity(std::string name)
+    {
+        for (Entity* e : entities)
+        {
+            if (e->tag == name) { return e; }
+        }
+        return nullptr;
+    }
+
     void Session::checkAllCollisions(Entity* entityToCheck)
     { 
         if (!entityToCheck->hasCollision) { return; }
@@ -221,8 +230,7 @@ namespace mojosabel {
                 entities.push_back(e);
             }
             addedEntities.clear();
-            
-            
+
 
             for (Entity* e : removedEntities)
             {

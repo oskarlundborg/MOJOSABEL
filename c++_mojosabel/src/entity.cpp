@@ -40,7 +40,7 @@ namespace mojosabel {
         adjustColliders();
     }
 
-     void Entity::setCollision(bool toSet)
+    void Entity::setCollision(bool toSet)
     {
         hasCollision = toSet;
     }
@@ -67,6 +67,17 @@ namespace mojosabel {
     std::vector<Collider>& Entity::getColliders()
     {
         return colliders;
+    }
+
+    Vector2 Entity::position()
+    {
+        return Vector2{rect.x, rect.y}; 
+    }
+    
+    void Entity::setPosition(Vector2 vecToSet)
+    {
+        rect.x = vecToSet.x;
+        rect.y = vecToSet.y;
     }
 
     Entity::~Entity() 
