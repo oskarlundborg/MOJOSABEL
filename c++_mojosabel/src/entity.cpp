@@ -27,12 +27,10 @@ namespace mojosabel {
 
     void Entity::draw()
     {
-        if(!texture)
+        if(texture)
         {
-            std::cout << "Draw Error: No texture" << std::endl;
-            return;
+            SDL_RenderCopy(sys.getRen(), texture, NULL, &rect);
         }
-        SDL_RenderCopy(sys.getRen(), texture, NULL, &rect);
     }
 
     void Entity::sneakyUpdate()
