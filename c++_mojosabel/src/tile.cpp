@@ -25,7 +25,8 @@ namespace mojosabel {
         std::sort(tileObjects.begin(), tileObjects.end(), compareLayer);
     }
 
-    bool compareLayer(Entity* e1, Entity* e2) {
+    bool compareLayer(Entity* e1, Entity* e2) 
+    {
         return e1->getLayer() < e2->getLayer();
     }
 }
