@@ -16,6 +16,7 @@ namespace mojosabel {
         void remove(Entity* entityToRemove);
         void sort();
     }; 
+    bool compareLayer(Entity* e1, Entity* e2);
 }
 
 #endif
