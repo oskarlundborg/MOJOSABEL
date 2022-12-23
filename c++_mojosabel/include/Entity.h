@@ -26,6 +26,7 @@ namespace mojosabel {
         bool hasColliders();
         void addCollider(int xOffset, int yOffset, int colWidth, int colHight);
         void adjustColliders();
+        int getLayer() { return layer; }
         std::vector<Collider>& getColliders();
         Vector2 position();
         void setPosition(Vector2 vecToSet);

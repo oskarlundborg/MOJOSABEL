@@ -30,8 +30,11 @@ namespace mojosabel {
 
     void Bullet::findClosestEnemy()
     {
+        if (ses.findEntity("Enemy") != nullptr)
+        {
+            target = ses.findEntity("Enemy")->position();
+        }
         
-        target = ses.findEntity("Enemy")->position();
     }
 
     void Bullet::onCollision(Collision<Entity> collision)
