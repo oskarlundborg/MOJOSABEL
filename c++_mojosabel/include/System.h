@@ -7,6 +7,7 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 #define MAX_KEYBOARD_KEYS 350
+#define TILE_SIZE 32
 
 namespace mojosabel
 {
