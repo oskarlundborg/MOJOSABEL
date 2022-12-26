@@ -33,12 +33,12 @@ namespace mojosabel {
 
     void Player::mouseDown(SDL_Event event)
     {
-        fire();
+        fire(event.button.x, event.button.y);
     }
 
-    void Player::fire()
+    void Player::fire(int x, int y)
     {
-        Bullet *bullet = new Bullet(rect.x, rect.y, 0, 0, 0, "Bullet", 30);
+        Bullet *bullet = new Bullet(rect.x, rect.y, 0, 0, 0, "Bullet", 30, x, y);
         bullet->loadTexture(constants::gResPath + "images/Bullet.png");
         bullet->resizeToImage();
         bullet->setCollision(true);

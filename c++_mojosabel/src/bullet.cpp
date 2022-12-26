@@ -6,11 +6,15 @@
 
 namespace mojosabel {
     
-    Bullet::Bullet(int x, int y, int w, int h, int layer, std::string tag, int s)
+    Bullet::Bullet(int x, int y, int w, int h, int layer, std::string tag, int s, int targetX, int targetY)
         : GameObject(x, y, w, h, layer, tag)
     {
         speed = s;
-        findClosestEnemy();
+        Vector2 targetPosition = Vector2{targetX, targetY};
+        targetPosition = targetPosition - position();
+        targetPosition = targetPosition * 100;
+        targetPosition = targetPosition + position();
+        target = targetPosition;
     }
 
     void Bullet::update()
