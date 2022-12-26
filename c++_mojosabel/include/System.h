@@ -8,6 +8,8 @@
 #define SCREEN_HEIGHT 720
 #define MAX_KEYBOARD_KEYS 350
 #define TILE_SIZE 32
+#define MAP_WIDTH 40
+#define MAP_HEIGHT 22
 
 namespace mojosabel
 {

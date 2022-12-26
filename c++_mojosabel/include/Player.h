@@ -15,7 +15,7 @@ namespace mojosabel {
         Player(int x, int y, int w, int h, int layer, std::string tag, int speed);
         void move();
         void update();
-        void fire();
+        void fire(int x, int y);
         void mouseDown(SDL_Event event);
         virtual ~Player() {}
     };
