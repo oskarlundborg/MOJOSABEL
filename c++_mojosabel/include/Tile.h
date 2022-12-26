@@ -11,7 +11,7 @@ namespace mojosabel {
     private:
         std::vector<Entity*> tileObjects;
     public:
-        Tile(){}
+        //Tile();
         Entity* getTopLayer(){return tileObjects[0];} // när vi ritar ut tiles i tilemap så hämtar vi det översta lagret och ritar ut det.
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
