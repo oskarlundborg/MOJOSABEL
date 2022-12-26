@@ -10,9 +10,11 @@ namespace mojosabel
     struct Tilemap
     {
     private:
+        Tile* map[MAP_WIDTH][MAP_HEIGHT];
+    
+    public:
         Tilemap();
-        Tile* tileGrid[MAP_WIDTH][MAP_HEIGHT];
-
+        Tile* operator()(int x, int y){return map[x][y];}
     };
 }
 

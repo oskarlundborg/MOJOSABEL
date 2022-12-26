@@ -1,18 +1,20 @@
-// #ifndef LEVEL_H
-// #define LEVEL_H
+#ifndef LEVEL_H
+#define LEVEL_H
+
+#include "Tilemap.h"
 
 
-// namespace mojosabel {
-//     class Level {
-// private:
-//     Tile **tileGrid;
-//     Free_object *freeObjects;
+namespace mojosabel {
+class Level {
+    private:
+        Tilemap tilemap;
 
-// public:
-//     void PlaceFreeOnGrid();
+    public:
+        void fillTilemap(std::string tag);
+        void drawTiles();
 
-// };
-// }
+ };
+}
 
 
-// #endif
+#endif

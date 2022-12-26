@@ -4,6 +4,7 @@
 #include "Session.h"
 #include "System.h"
 #include "Collision.h"
+#include "World.h"
 
 namespace mojosabel {
 
@@ -172,6 +173,8 @@ namespace mojosabel {
 
     void Session::run()
     {
+        World* world = new World();
+        std::cout << "Session started" << std::endl;
         renderTime = SDL_GetTicks();
         remainder = 0;
         bool quit = false;
@@ -217,6 +220,7 @@ namespace mojosabel {
             
             SDL_SetRenderDrawColor(sys.getRen(), 255, 255, 255, 255);
             SDL_RenderClear(sys.getRen());
+            world->drawCurrentLevel();
 
             // Uppdaterar och ritar entities
             for (Entity* e : entities)
