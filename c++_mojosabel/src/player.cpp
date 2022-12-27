@@ -10,12 +10,14 @@ namespace mojosabel {
     {
         health = 0;
         speed = 0;
+        hasCollision = true;
     }
 
     Player::Player(int x, int y, int w, int h, int layer, std::string name, int sp)
         : GameObject (x, y, w, h, layer, name)
     {
         speed = sp;
+        hasCollision = true;
     }
     
     void Player::update()
@@ -44,5 +46,12 @@ namespace mojosabel {
         bullet->setCollision(true);
         instantiate(bullet);
         //hasColliders();
+    }
+
+    void Player::onCollision(Collision<Entity> collision)
+    {
+        if (collision.tag == "Wall"){
+            destroy(collision.object);
+        }
     }
 }

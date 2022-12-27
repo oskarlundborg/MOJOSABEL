@@ -48,8 +48,13 @@ namespace mojosabel {
         { 
             std::cout << "hit enemy" << std::endl; 
             destroy(collision.object);
+            destroy(this);
         }
-        destroy(this);
+        if (collision.tag == "Wall")
+        {
+            destroy(this);
+        }
+        
     }
 
 }
