@@ -10,8 +10,8 @@ namespace mojosabel{
     class FloorTile : public Entity
     {
     public:
+        const bool blocked = false;
         FloorTile(int xPos, int yPos);
-                
     };
 }
 #endif

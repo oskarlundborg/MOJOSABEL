@@ -1,4 +1,5 @@
 #include "World.h"
+#include "MapGenerator.h"
 
 namespace mojosabel {
     World::World()
@@ -11,7 +12,9 @@ namespace mojosabel {
     {
         Level* level = new Level();
         levels.push_back(level);
-        level->fillTilemap("Floor");
+        //level->fillTilemap("Floor");
+        MapGenerator* mapGenerator = new MapGenerator();
+        mapGenerator->mixMap(level);
     }
 
     void World::drawCurrentLevel()

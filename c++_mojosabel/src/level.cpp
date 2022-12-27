@@ -1,6 +1,8 @@
 #include "Level.h"
 #include "FloorTile.h"
+#include "WallTile.h"
 #include "System.h"
+#include "Session.h"
 
 namespace mojosabel{
     
@@ -15,7 +17,7 @@ namespace mojosabel{
                     tilemap(x, y)->add(new FloorTile(x * TILE_SIZE, y * TILE_SIZE));
                 } else if(tag == "Wall")
                 {
-                    //hdhdhd
+                    tilemap(x, y)->add(new WallTile(x * TILE_SIZE, y * TILE_SIZE));
                 }
             }
         }
@@ -29,6 +31,18 @@ namespace mojosabel{
             {
                 tilemap(x, y)->getTopLayer()->draw();
             }
+        }
+    }
+
+    void Level::easyFill(int x, int y, std::string tag){
+        if(tag == "Floor")
+        {
+            tilemap(x, y)->add(new FloorTile(x * TILE_SIZE, y * TILE_SIZE));
+        } else if(tag == "Wall")
+        {
+            WallTile* wallTile = new WallTile(x * TILE_SIZE, y * TILE_SIZE);
+            tilemap(x, y)->add(wallTile);
+            ses.add(wallTile);
         }
     }
 }
