@@ -9,6 +9,7 @@ namespace mojosabel {
     Bullet::Bullet(int x, int y, int w, int h, int layer, std::string tag, int s, int targetX, int targetY)
         : GameObject(x, y, w, h, layer, tag)
     {
+        // göra en medlem som sköter nedan
         speed = s;
         Vector2 targetPosition = Vector2{targetX, targetY};
         targetPosition = targetPosition - position();
