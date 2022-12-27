@@ -12,6 +12,7 @@ class Level {
     public:
         void fillTilemap(std::string tag);
         void drawTiles();
+        void easyFill(int x, int y, std::string tag);
 
  };
 }
