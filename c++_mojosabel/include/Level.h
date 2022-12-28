@@ -13,6 +13,8 @@ class Level {
         void fillTilemap(std::string tag);
         void drawTiles();
         void easyFill(int x, int y, std::string tag);
+        Vector2 checkForFloor();
+        bool isTileWall(int x, int y);
 
  };
 }

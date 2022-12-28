@@ -13,6 +13,7 @@ namespace mojosabel {
     {
         std::cout << "Hej det funkar, session" << std::endl;
         rootCanvas = new Canvas();
+        //world = new World();
     }
 
     void Session::addSprite(Sprite* spriteToAdd)
@@ -173,7 +174,6 @@ namespace mojosabel {
 
     void Session::run()
     {
-        World* world = new World();
         std::cout << "Session started" << std::endl;
         renderTime = SDL_GetTicks();
         remainder = 0;
@@ -227,6 +227,7 @@ namespace mojosabel {
             {
                 e->sneakyUpdate();
                 checkAllCollisions(e);
+                
             }
  
             for (Entity* e : addedEntities)

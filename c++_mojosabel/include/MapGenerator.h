@@ -10,14 +10,15 @@ namespace mojosabel {
     {
     public:
         int intMap[MAP_WIDTH][MAP_HEIGHT];
-        int randomFillProcent = 52;
+        int randomFillProcent = 49;
         bool useRandomSeed = true;
 
         MapGenerator();
-        void genereateIntMap();
+        void genereateIntMap(int smoothCount);
         void randomFillIntMap();
         void smoothMap();
         void mixMap(Level* level);
+        int getSurroundingWallCount(int tileX, int tileY);
     };
 }
 

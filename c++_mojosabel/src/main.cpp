@@ -51,7 +51,13 @@ int main(int argc, char* argv[])
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
 
-    Player* player = new Player(100, 100, 32, 32, 0, "Player", 3);
+    World* world = new World();
+    ses.setWorld(world);
+
+    Vector2 spawnPos = world->getCurrentLevel()->checkForFloor();
+    int spawnX = spawnPos.x;
+    int spawnY = spawnPos.y;
+    Player* player = new Player(spawnX, spawnY, 32, 32, 0, "Player", 3);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
     ses.add(player);
 
