@@ -3,6 +3,7 @@
 #include "Bullet.h"
 #include "System.h"
 #include "Constants.h"
+#include "Session.h"
 
 namespace mojosabel {
 
@@ -10,14 +11,12 @@ namespace mojosabel {
     {
         health = 0;
         speed = 0;
-        hasCollision = true;
     }
 
     Player::Player(int x, int y, int w, int h, int layer, std::string name, int sp)
         : GameObject (x, y, w, h, layer, name)
     {
         speed = sp;
-        hasCollision = true;
     }
     
     void Player::update()
@@ -27,10 +26,10 @@ namespace mojosabel {
 
     void Player::move()
     {
-        if(sys.keyboard[SDL_SCANCODE_W]) { rect.y -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_S]) { rect.y += speed; }
-        if(sys.keyboard[SDL_SCANCODE_A]) { rect.x -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_D]) { rect.x += speed; }
+        if(sys.keyboard[SDL_SCANCODE_W] && !(checkDirection("Up"))) { rect.y -= speed; }
+        if(sys.keyboard[SDL_SCANCODE_S] && !(checkDirection("Down"))) { rect.y += speed; }
+        if(sys.keyboard[SDL_SCANCODE_A] && !(checkDirection("Left"))) { rect.x -= speed; }
+        if(sys.keyboard[SDL_SCANCODE_D] && !(checkDirection("Right"))) { rect.x += speed; }
     }
 
     void Player::mouseDown(SDL_Event event)
@@ -45,13 +44,24 @@ namespace mojosabel {
         bullet->resizeToImage();
         bullet->setCollision(true);
         instantiate(bullet);
-        //hasColliders();
+        hasColliders();
     }
 
-    void Player::onCollision(Collision<Entity> collision)
-    {
-        if (collision.tag == "Wall"){
-            destroy(collision.object);
+    bool Player::checkDirection(std::string direction){
+        Level* level = ses.getWorld()->getCurrentLevel();
+        if (direction == "Up"){
+            return (level->isTileWall(rect.x, rect.y - speed) || level->isTileWall(rect.x + rect.w, rect.y - speed));
         }
+        if (direction == "Down"){
+            return (level->isTileWall(rect.x, rect.y + rect.h + speed) || level->isTileWall(rect.x + rect.w, rect.y + rect.h + speed));
+        }
+        if (direction == "Left"){
+            return (level->isTileWall(rect.x - speed, rect.y) || level->isTileWall(rect.x - speed, rect.y + rect.h));
+        }
+        if (direction == "Right"){
+            return (level->isTileWall(rect.x + rect.w + speed, rect.y) || level->isTileWall(rect.x + rect.w + speed, rect.y + rect.h));
+        }
+
+        return false;
     }
 }

@@ -14,6 +14,7 @@ namespace mojosabel {
         int currentLevel;
         void newLevel();
         void drawCurrentLevel();
+        Level* getCurrentLevel() { return levels[currentLevel]; }
 
     };
 }

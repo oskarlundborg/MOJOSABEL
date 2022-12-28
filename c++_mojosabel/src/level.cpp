@@ -45,4 +45,27 @@ namespace mojosabel{
             ses.add(wallTile);
         }
     }
+
+    Vector2 Level::checkForFloor(){
+        for(int x = 0; x < MAP_WIDTH; x++)
+        {
+            for(int y = 0; y < MAP_HEIGHT; y++)
+            {
+                if(tilemap(x, y)->getTopLayer()->tag == "Floor"){
+                    return Vector2(x * TILE_SIZE, y * TILE_SIZE);
+                }
+            }
+        }
+        return Vector2(0, 0);
+    }
+
+    bool Level::isTileWall(int x, int y){
+        if ((x/TILE_SIZE >= MAP_WIDTH || y/TILE_SIZE >= MAP_HEIGHT || x/TILE_SIZE < 0 || y/TILE_SIZE < 0)){  
+            return true;
+        } else if (tilemap(x/TILE_SIZE, y/TILE_SIZE)->getTopLayer()->tag == "Wall"){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

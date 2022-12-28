@@ -14,7 +14,7 @@ namespace mojosabel {
     class Session
     {
     private:
-        //World world;
+        World* world;
         long renderTime; //tiden det tog för förra framen att rendera
         float remainder; 
         Canvas *rootCanvas;
@@ -35,6 +35,8 @@ namespace mojosabel {
         void createNewWorld(int levelCount);
         void capFrameRate(long *renderTime, float *remainder);
         void run();
+        World* getWorld(){return world;}
+        void setWorld(World* worldToSet) { world = worldToSet;}
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};
         Entity* findEntity(std::string name);

@@ -18,7 +18,7 @@ namespace mojosabel {
         void fire(int x, int y);
         void mouseDown(SDL_Event event);
         virtual ~Player() {}
-        void onCollision(Collision<Entity> collision);
+        bool checkDirection(std::string direction);
     };
 }
 #endif
