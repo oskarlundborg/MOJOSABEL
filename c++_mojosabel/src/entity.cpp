@@ -38,6 +38,12 @@ namespace mojosabel {
         update();
         draw();
         adjustColliders();
+        delay--;
+        if (delay <= 0) 
+        {
+            fixedUpdate();
+            delay = 60;
+        }
     }
 
     void Entity::setCollision(bool toSet)

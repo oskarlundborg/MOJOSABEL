@@ -46,17 +46,17 @@ namespace mojosabel{
         }
     }
 
-    Vector2 Level::checkForFloor(){
+    void Level::checkForFloor(){
         for(int x = 0; x < MAP_WIDTH; x++)
         {
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
                 if(tilemap(x, y)->getTopLayer()->tag == "Floor"){
-                    return Vector2(x * TILE_SIZE, y * TILE_SIZE);
+                    
+                    floorTiles.push_back(Vector2(x * TILE_SIZE, y * TILE_SIZE));
                 }
             }
         }
-        return Vector2(0, 0);
     }
 
     bool Level::isTileWall(int x, int y){
@@ -67,5 +67,12 @@ namespace mojosabel{
         } else {
             return false;
         }
+    }
+
+    Vector2 Level::generateSpawnPosition()
+    {  
+        int i = rand() % floorTiles.size();
+        Vector2 vec = floorTiles[i];
+        return vec;
     }
 }

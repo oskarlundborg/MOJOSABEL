@@ -5,6 +5,7 @@ namespace mojosabel {
     World::World()
     {
         currentLevel = 0;
+        mapGenerator = new MapGenerator();
         newLevel();
     }
 
@@ -12,8 +13,7 @@ namespace mojosabel {
     {
         Level* level = new Level();
         levels.push_back(level);
-        //level->fillTilemap("Floor");
-        MapGenerator* mapGenerator = new MapGenerator();
+        mapGenerator->genereateIntMap(3);
         mapGenerator->mixMap(level);
     }
 

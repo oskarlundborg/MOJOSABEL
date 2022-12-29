@@ -16,6 +16,7 @@ namespace mojosabel {
     public:
         SDL_Rect rect;
         int layer;
+        int delay = 60;
         bool hasCollision = false;
         std::string tag;
         SDL_Texture* texture;
@@ -36,6 +37,7 @@ namespace mojosabel {
         void sneakyUpdate();
         virtual void start() {}
         virtual void update() {}
+        virtual void fixedUpdate() {}
         virtual void onCollision(Collision<Entity> collision) {} 
         virtual void mouseUp(SDL_Event event) {}
         virtual void mouseDown(SDL_Event event) {}
