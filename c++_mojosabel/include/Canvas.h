@@ -2,7 +2,6 @@
 #define CANVAS_H
 
 #include <vector>
-#include "System.h"
 #include "Ui_sprite.h"
 
 namespace mojosabel {
@@ -27,6 +26,8 @@ namespace mojosabel {
         void addUiSprite(Ui_sprite* uiSpriteToAdd);
         void removeCanvas(Canvas* canvasToRemove);
         void removeUiSprite(Ui_sprite* uiSpriteToRemove);
+        void handleMouseUp(const SDL_Event& event);
+        void handleMouseDown(const SDL_Event& event);
         void sortSprites();
         void drawSprites();
         ~Canvas();

@@ -4,7 +4,6 @@
 #include "Session.h"
 #include "System.h"
 #include "Collision.h"
-#include "World.h"
 
 namespace mojosabel {
 
@@ -14,11 +13,6 @@ namespace mojosabel {
         std::cout << "Hej det funkar, session" << std::endl;
         rootCanvas = new Canvas();
         //world = new World();
-    }
-
-    void Session::addSprite(Sprite* spriteToAdd)
-    {
-        sprites.push_back(spriteToAdd);
     }
 
     void Session::add(Entity* entityToAdd)
@@ -171,6 +165,10 @@ namespace mojosabel {
         return true;
     }
 
+    void Session::createNewWorld(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit)
+    {
+        
+    }
 
     void Session::run()
     {
@@ -189,20 +187,14 @@ namespace mojosabel {
                         quit = true;
                         break;
                     case SDL_MOUSEBUTTONDOWN:
-                        for (Sprite* s : sprites)
-                        {
-                            s -> mouseDown(event);
-                        }
+                        rootCanvas->handleMouseDown(event);
                         for (Entity* e : entities)
                         {
                             e -> mouseDown(event);
                         }
                         break;
                     case SDL_MOUSEBUTTONUP:
-                        for (Sprite* s : sprites)
-                        {
-                            s -> mouseUp(event);
-                        }
+                        rootCanvas->handleMouseUp(event);
                         for (Entity* e : entities)
                         {
                             e -> mouseUp(event);
@@ -253,13 +245,8 @@ namespace mojosabel {
                 }
             }
             removedEntities.clear();
-            
           
             // Ritar sprite objekt
-            for (Sprite* s : sprites)
-            {
-                s->draw();
-            }
             rootCanvas->drawSprites();
             SDL_RenderPresent(sys.getRen());
             capFrameRate(&renderTime, &remainder);
