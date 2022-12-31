@@ -10,14 +10,16 @@ class Level {
         Tilemap tilemap;
 
     public:
-        std::vector<Vector2> floorTiles;
-        void fillTilemap(std::string tag);
+        Level(std::string walkableTexturePath, std::string unwalkableTexturePath) 
+            : walkableTexturePath(walkableTexturePath), unwalkableTexturePath(unwalkableTexturePath) {}
+        std::string walkableTexturePath, unwalkableTexturePath;
+        std::vector<Vector2> walkableTiles;
         void drawTiles();
         void easyFill(int x, int y, std::string tag);
         void checkForFloor();
         bool isTileWall(int x, int y);
         Vector2 generateSpawnPosition(); // möjligen enemypointer 
- };
+    };
 }
 
 

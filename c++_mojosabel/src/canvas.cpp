@@ -47,6 +47,31 @@ namespace mojosabel {
         std::sort(uiSprites.begin(), uiSprites.end(), compareLayer);
     }
 
+    void Canvas::handleMouseUp(const SDL_Event& event)
+    {
+        for (Ui_sprite* s : uiSprites)
+        {
+            s->mouseUp(event);
+        }
+
+        for (Canvas* c : canvases)
+        {
+            c->handleMouseUp(event);
+        }
+    }
+    
+    void Canvas::handleMouseDown(const SDL_Event& event)
+    {
+         for (Ui_sprite* s : uiSprites)
+        {
+            s->mouseDown(event);
+        }
+        for (Canvas* c : canvases)
+        {
+            c->handleMouseDown(event);
+        }
+    }
+
     Canvas::~Canvas()
     {
         for (Canvas* p : canvases) { delete p; }

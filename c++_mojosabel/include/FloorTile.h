@@ -2,8 +2,6 @@
 #define FLOORTILE_H
 
 #include "Entity.h"
-#include "System.h"
-#include "Constants.h"
 
 namespace mojosabel{
 
@@ -11,7 +9,7 @@ namespace mojosabel{
     {
     public:
         const bool blocked = false;
-        FloorTile(int xPos, int yPos);
+        FloorTile(int xPos, int yPos, std::string texture);
     };
 }
 #endif

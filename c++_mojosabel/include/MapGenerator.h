@@ -10,13 +10,13 @@ namespace mojosabel {
     class MapGenerator
     {
     public:
+        MapGenerator(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit)
+            : smoothMapCount(smoothMap), randomFillProcent(fillPercent), smoothWalkableLimit(smoothWalkableLimit), smoothUnwalkableLimit(smoothUnwalkableLimit) {}
         std::vector<Enemy*> levelEnemies;
         int intMap[MAP_WIDTH][MAP_HEIGHT];
-        int randomFillProcent = 49;
-        bool useRandomSeed = true;
-
+        int smoothMapCount, randomFillProcent, smoothWalkableLimit, smoothUnwalkableLimit;
         std::vector<Enemy*>& getLevelEnemies() { return levelEnemies; }
-        void genereateIntMap(int smoothCount);
+        void genereateIntMap();
         void randomFillIntMap();
         void smoothMap();
         void mixMap(Level* level);

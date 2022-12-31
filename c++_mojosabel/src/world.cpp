@@ -1,19 +1,26 @@
+#include <string>
 #include "World.h"
-#include "MapGenerator.h"
 
 namespace mojosabel {
-    World::World()
+    
+    World::World(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit)
     {
-        currentLevel = 0;
-        mapGenerator = new MapGenerator();
-        newLevel();
+        mapGenerator = new MapGenerator(smoothMap, fillPercent, smoothWalkableLimit, smoothUnwalkableLimit);
     }
 
-    void World::newLevel()
+    void World::newLevel(std::string walkableTexturePath, std::string unwalkableTexturePath)
     {
-        Level* level = new Level();
+        if (levels.size() == 0)
+        {
+            currentLevel = 0;
+        }
+        else 
+        {
+            currentLevel++;
+        }
+        Level* level = new Level(walkableTexturePath, unwalkableTexturePath); 
         levels.push_back(level);
-        mapGenerator->genereateIntMap(3);
+        mapGenerator->genereateIntMap();
         mapGenerator->mixMap(level);
     }
 

@@ -11,6 +11,12 @@
 
 namespace mojosabel {
 
+
+    /*
+        För spatial hashgrid: måste veta vart den är hela tiden och uppdatera sin position. 
+        Ska kunna vara i fler gridspaces samtidigt
+        
+    */
     class Entity 
     {
     public:

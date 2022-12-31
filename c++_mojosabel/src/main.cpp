@@ -53,6 +53,7 @@ int main(int argc, char* argv[])
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
 
     World* world = new World();
+    world->newLevel("images/GrassTile.png", "images/GrayWall.png");
     ses.setWorld(world);
 
     Vector2 spawnPos = world->getCurrentLevel()->generateSpawnPosition();
@@ -75,13 +76,13 @@ int main(int argc, char* argv[])
     // ses.add(enemy);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
-	ses.addSprite(lbl);
+	UI->addUiSprite(lbl);
 
     Ui_button* b1 = new IncreaseButton(lbl);
-    ses.addSprite(b1);
+    UI->addUiSprite(b1);
 
     Ui_button* b2 = new DecreaseButton(lbl);
-    ses.addSprite(b2);
+    UI->addUiSprite(b2);
     
     ses.run();
 

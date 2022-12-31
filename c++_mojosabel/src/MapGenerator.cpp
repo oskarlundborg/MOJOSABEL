@@ -4,30 +4,29 @@
 
 namespace mojosabel {
 
-    void MapGenerator::genereateIntMap(int smoothCount){
+    void MapGenerator::genereateIntMap()
+    {
         randomFillIntMap();
-        for(int i = 0; i < smoothCount; i++){
+        for(int i = 0; i < smoothMapCount; i++)
+        {
             smoothMap();
         }
     }
 
-    void MapGenerator::randomFillIntMap(){
-        if (useRandomSeed)
+    void MapGenerator::randomFillIntMap()
+    {
+        for(int x = 0; x < MAP_WIDTH; x++)
         {
-            //std::size_t seedHash = std::hash<std::string>()(seed);
-            //seedHash = rand() % 60 + 40;
-            for(int x = 0; x < MAP_WIDTH; x++)
+            for(int y = 0; y < MAP_HEIGHT; y++)
             {
-                for(int y = 0; y < MAP_HEIGHT; y++)
-                {
-                    int i = rand() % 20 + 40;
-                    intMap[x][y] = (i < randomFillProcent) ? 1 : 0;
-                }
+                int i = rand() % 20 + 40;
+                intMap[x][y] = (i < randomFillProcent) ? 1 : 0;
             }
         }
     }
 
-    void MapGenerator::mixMap(Level* level){
+    void MapGenerator::mixMap(Level* level)
+    {
         for(int x = 0; x < MAP_WIDTH; x++)
         {
             for(int y = 0; y < MAP_HEIGHT; y++)
@@ -60,20 +59,25 @@ namespace mojosabel {
         return wallCount;
     }
 
-    void MapGenerator::smoothMap(){
-        for(int x = 0; x < MAP_WIDTH; x ++){
-            for(int y = 0; y < MAP_HEIGHT; y ++){
+    void MapGenerator::smoothMap()
+    {
+        for(int x = 0; x < MAP_WIDTH; x ++)
+        {
+            for(int y = 0; y < MAP_HEIGHT; y ++)
+            {
                 int neighbourWalls = getSurroundingWallCount(x, y);
-                if (neighbourWalls > 4){
+                if (neighbourWalls > smoothUnwalkableLimit)
+                {
                     intMap[x][y] = 1;
-                } else if (neighbourWalls < 4){
+                } else if (neighbourWalls < smoothWalkableLimit)
+                {
                     intMap[x][y] = 0;
                 }
             }
         }
     }
 
-    void MapGenerator::generateEnemies(Level* level)
+    void MapGenerator::generateEnemies(Level* level) //ska inte ligga här, kanske gameObjectgenerator?
     {
         int random = rand() % 10 + 10;
         
