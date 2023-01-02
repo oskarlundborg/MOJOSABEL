@@ -31,7 +31,6 @@ namespace mojosabel {
         void capFrameRate(long *renderTime, float *remainder);
         void run();
         World* getWorld(){return world;}
-        void setWorld(World* worldToSet) { world = worldToSet;}
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};
         Entity* findEntity(std::string name);

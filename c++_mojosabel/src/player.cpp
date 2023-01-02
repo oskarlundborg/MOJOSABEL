@@ -46,22 +46,4 @@ namespace mojosabel {
         instantiate(bullet);
         hasColliders();
     }
-
-    bool Player::checkDirection(std::string direction){
-        Level* level = ses.getWorld()->getCurrentLevel();
-        if (direction == "Up"){
-            return (level->isTileWall(rect.x, rect.y - speed) || level->isTileWall(rect.x + rect.w, rect.y - speed));
-        }
-        if (direction == "Down"){
-            return (level->isTileWall(rect.x, rect.y + rect.h + speed) || level->isTileWall(rect.x + rect.w, rect.y + rect.h + speed));
-        }
-        if (direction == "Left"){
-            return (level->isTileWall(rect.x - speed, rect.y) || level->isTileWall(rect.x - speed, rect.y + rect.h));
-        }
-        if (direction == "Right"){
-            return (level->isTileWall(rect.x + rect.w + speed, rect.y) || level->isTileWall(rect.x + rect.w + speed, rect.y + rect.h));
-        }
-
-        return false;
-    }
 }

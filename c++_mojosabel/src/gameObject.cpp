@@ -15,4 +15,43 @@ namespace mojosabel
     {
         ses.remove(entity);
     }
+
+    void moveLeft(GameObject* gameObject)
+    {
+        gameObject->rect.x -= gameObject->getSpeed();
+    }
+
+    void moveRight(GameObject* gameObject)
+    {
+        gameObject->rect.x += gameObject->getSpeed();
+    }
+
+    void moveUp(GameObject* gameObject)
+    {
+        gameObject->rect.y -= gameObject->getSpeed();
+    }
+
+    void moveDown(GameObject* gameObject)
+    {
+        gameObject->rect.y += gameObject->getSpeed();
+    }
+
+    bool GameObject::checkDirection(std::string direction)
+    {
+        Level* level = ses.getWorld()->getCurrentLevel();
+        if (direction == "Up"){
+            return (level->isTileWall(rect.x + 1, rect.y - speed) || level->isTileWall(rect.x - 1 + rect.w, rect.y - speed));
+        }
+        if (direction == "Down"){
+            return (level->isTileWall(rect.x + 1, rect.y + rect.h + speed) || level->isTileWall(rect.x - 1 + rect.w, rect.y + rect.h + speed));
+        }
+        if (direction == "Left"){
+            return (level->isTileWall(rect.x - speed, rect.y + 1) || level->isTileWall(rect.x - speed, rect.y - 1 + rect.h));
+        }
+        if (direction == "Right"){
+            return (level->isTileWall(rect.x + rect.w + speed, rect.y + 1) || level->isTileWall(rect.x + rect.w + speed, rect.y - 1 + rect.h));
+        }
+
+        return false;
+    }
 } 

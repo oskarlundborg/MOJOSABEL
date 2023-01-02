@@ -39,7 +39,6 @@ namespace mojosabel {
             }
         }
         level->checkForFloor();
-        generateEnemies(level);
     }
 
     int MapGenerator::getSurroundingWallCount(int tileX, int tileY){
@@ -74,21 +73,6 @@ namespace mojosabel {
                     intMap[x][y] = 0;
                 }
             }
-        }
-    }
-
-    void MapGenerator::generateEnemies(Level* level) //ska inte ligga här, kanske gameObjectgenerator?
-    {
-        int random = rand() % 10 + 10;
-        
-        for(int i = 0; i < random; i++){
-            Vector2 spawnPos = level->generateSpawnPosition();
-            int spawnX = spawnPos.x;
-            int spawnY = spawnPos.y;
-            Enemy* enemy = new Enemy(spawnX, spawnY, 32, 32, 0, "Enemy", 1);
-            enemy->loadTexture(constants::gResPath + "images/Spaceship.png");
-            enemy->setCollision(true);
-            levelEnemies.push_back(enemy);
         }
     }
 }
