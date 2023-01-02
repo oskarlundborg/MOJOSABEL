@@ -16,7 +16,8 @@ namespace mojosabel{
         }
     }
 
-    void Level::easyFill(int x, int y, std::string tag){
+    void Level::easyFill(int x, int y, std::string tag) 
+    {
         if(tag == "Floor")
         {
             tilemap(x, y)->add(new FloorTile(x * TILE_SIZE, y * TILE_SIZE, walkableTexturePath));
@@ -41,7 +42,7 @@ namespace mojosabel{
         }
     }
 
-    bool Level::isTileWall(int x, int y){
+    bool Level::isTileWall(int x, int y) {
         if ((x/TILE_SIZE >= MAP_WIDTH || y/TILE_SIZE >= MAP_HEIGHT || x/TILE_SIZE < 0 || y/TILE_SIZE < 0)){  
             return true;
         } else if (tilemap(x/TILE_SIZE, y/TILE_SIZE)->getTopLayer()->tag == "Wall"){
@@ -51,7 +52,7 @@ namespace mojosabel{
         }
     }
 
-    Vector2 Level::generateSpawnPosition()
+    const Vector2 Level::generateSpawnPosition() const
     {  
         int i = rand() % walkableTiles.size();
         Vector2 vec = walkableTiles[i];

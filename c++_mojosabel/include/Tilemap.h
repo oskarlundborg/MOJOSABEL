@@ -4,10 +4,6 @@
 #include "Tile.h"
 #include "Constants.h"
 
-
-/*
-*/
-
 namespace mojosabel
 {
     struct Tilemap
@@ -20,6 +16,5 @@ namespace mojosabel
         Tile* operator()(int x, int y){return map[x][y];}
     };
 }
-
 
 #endif

@@ -15,7 +15,7 @@ namespace mojosabel {
         void move();
         void update();
         void fire(int x, int y);
-        void mouseDown(SDL_Event event);
+        void mouseDown(int x, int y);
         virtual ~Player() {}
     };
 }

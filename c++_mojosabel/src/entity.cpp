@@ -15,7 +15,7 @@ namespace mojosabel {
         rect.h = height;
     } 
         
-    void Entity::loadTexture(std::string filename)
+    void Entity::loadTexture(const std::string filename)
     {
         texture = IMG_LoadTexture(sys.getRen(), (filename).c_str());
     }
@@ -25,7 +25,7 @@ namespace mojosabel {
         SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
     }
 
-    void Entity::draw()
+    void Entity::draw() const
     {
         if(texture)
         {
@@ -46,7 +46,7 @@ namespace mojosabel {
         }
     }
 
-    void Entity::setCollision(bool toSet)
+    void Entity::setCollision(const bool toSet)
     {
         hasCollision = toSet;
     }
@@ -75,12 +75,12 @@ namespace mojosabel {
         return colliders;
     }
 
-    Vector2 Entity::position()
+    Vector2 Entity::position() const
     {
         return Vector2{rect.x, rect.y}; 
     }
     
-    void Entity::setPosition(Vector2 vecToSet)
+    void Entity::setPosition(const Vector2 vecToSet)
     {
         rect.x = vecToSet.x;
         rect.y = vecToSet.y;

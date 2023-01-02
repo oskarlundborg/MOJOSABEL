@@ -10,12 +10,12 @@ namespace mojosabel {
    {
     private:
         std::vector<Entity*> tileObjects;
+        void sort();
     public:
-        //Tile();
-        Entity* getTopLayer(){return tileObjects[0];} // när vi ritar ut tiles i tilemap så hämtar vi det översta lagret och ritar ut det.
+        Entity* getTopLayer() { return tileObjects[0]; } // när vi ritar ut tiles i tilemap så hämtar vi det översta lagret och ritar ut det.
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
-        void sort();
+        
     }; 
     bool compareLayer(Entity* e1, Entity* e2);
 }
