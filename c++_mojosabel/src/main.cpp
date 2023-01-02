@@ -11,6 +11,7 @@
 #include "Entity.h"
 #include "Enemy.h"
 #include "MapGenerator.h"
+#include "GameObjectGenerator.h"
 
 
 using namespace mojosabel;
@@ -52,28 +53,17 @@ int main(int argc, char* argv[])
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
 
-    World* world = new World();
-    world->newLevel("images/GrassTile.png", "images/GrayWall.png");
-    ses.setWorld(world);
+    ses.createNewWorld(3, 49, 4, 4);
+    ses.getWorld()->newLevel("images/GrassTile.png", "images/GrayWall.png");
 
-    Vector2 spawnPos = world->getCurrentLevel()->generateSpawnPosition();
+    Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;
     int spawnY = spawnPos.y;
     Player* player = new Player(spawnX, spawnY, 32, 32, 0, "Player", 3);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
     ses.add(player);
 
-    // Vector2 enemySpawnPos = world->getCurrentLevel()->generateSpawnPosition();
-    // int enSpawnX = enemySpawnPos.x;
-    // int enSpawnY = enemySpawnPos.y;
-    // Enemy* enemy = new Enemy(enSpawnX, enSpawnY, 32, 32, 0, "Enemy", 3);
-    // enemy->loadTexture(constants::gResPath + "images/Spaceship.png");
-    // enemy->setCollision(true);
-    for (Enemy* enemy : world->getMapGenerator()->getLevelEnemies())
-    {
-        ses.add(enemy);
-    }
-    // ses.add(enemy);
+    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), 5);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	UI->addUiSprite(lbl);

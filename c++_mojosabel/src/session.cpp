@@ -167,7 +167,7 @@ namespace mojosabel {
 
     void Session::createNewWorld(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit)
     {
-        
+        world = new World(smoothMap, fillPercent, smoothUnwalkableLimit, smoothUnwalkableLimit);
     }
 
     void Session::run()
