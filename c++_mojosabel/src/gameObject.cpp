@@ -11,32 +11,32 @@ namespace mojosabel
         }
     }
 
-    void GameObject::destroy(Entity* entity)
+    void GameObject::destroy(Entity* entity) 
     {
         ses.remove(entity);
     }
 
     void moveLeft(GameObject* gameObject)
     {
-        gameObject->rect.x -= gameObject->getSpeed();
+        gameObject->getRect()->x -= gameObject->getSpeed();
     }
 
     void moveRight(GameObject* gameObject)
     {
-        gameObject->rect.x += gameObject->getSpeed();
+        gameObject->getRect()->x += gameObject->getSpeed();
     }
 
     void moveUp(GameObject* gameObject)
     {
-        gameObject->rect.y -= gameObject->getSpeed();
+        gameObject->getRect()->y -= gameObject->getSpeed();
     }
 
     void moveDown(GameObject* gameObject)
     {
-        gameObject->rect.y += gameObject->getSpeed();
+        gameObject->getRect()->y += gameObject->getSpeed();
     }
 
-    bool GameObject::checkDirection(std::string direction)
+    bool GameObject::checkDirection(const std::string direction)
     {
         Level* level = ses.getWorld()->getCurrentLevel();
         if (direction == "Up"){

@@ -7,6 +7,13 @@ namespace mojosabel {
     
     class Ui_button : public Ui_sprite 
     {
+        private:
+            bool isDown = false;
+            SDL_Texture* buttonImageDown;
+            SDL_Texture* buttonImageUp;
+        protected:
+            Ui_button(int x, int y, int w, int h, std::string txt);
+        
         public:
             static Ui_button* getInstance(int x, int y, int w, int h, std::string txt);
             void mouseDown(const SDL_Event&);
@@ -14,14 +21,7 @@ namespace mojosabel {
             void draw();
             virtual void perform(Ui_button* source) {}
             ~Ui_button();
-        protected:
-            Ui_button(int x, int y, int w, int h, std::string txt);
-        private:
-            bool isDown = false;
-            SDL_Texture* buttonImageDown;
-            SDL_Texture* buttonImageUp;
     };
 }
-
 
 #endif

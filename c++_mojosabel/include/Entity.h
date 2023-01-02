@@ -11,42 +11,42 @@
 
 namespace mojosabel {
 
-
-    /*
-        För spatial hashgrid: måste veta vart den är hela tiden och uppdatera sin position. 
-        Ska kunna vara i fler gridspaces samtidigt
-        
-    */
     class Entity 
     {
-    public:
-        SDL_Rect rect;
-        int layer;
+    private:
         int delay = 60;
-        bool hasCollision = false;
-        std::string tag;
-        SDL_Texture* texture;
-        std::vector<Collider> colliders;
+
+    protected:
         Entity() : Entity(0, 0, 0, 0, 0, "Unknown") {}
         Entity(int xPos, int yPos, int width, int height, int layer, std::string tag);
-        void setCollision(bool toSet);
+        int layer;
+        SDL_Rect rect;
+        bool hasCollision = false;
+        SDL_Texture* texture;
+        std::vector<Collider> colliders;
+
+    public:
+        const std::string tag;
+        void setCollision(const bool toSet);
         bool hasColliders();
+        const bool getCollision() const { return hasCollision; } 
         void addCollider(int xOffset, int yOffset, int colWidth, int colHight);
         void adjustColliders();
-        int getLayer() { return layer; }
+        int getLayer() const { return layer; }
+        SDL_Rect* getRect() { return &rect; }
         std::vector<Collider>& getColliders();
-        Vector2 position();
-        void setPosition(Vector2 vecToSet);
-        void loadTexture(std::string filename);
+        Vector2 position() const;
+        void setPosition(const Vector2 vecToSet);
+        void loadTexture(const std::string filename);
         void resizeToImage();
-        void draw();
+        void draw() const;
         void sneakyUpdate();
         virtual void start() {}
         virtual void update() {}
         virtual void fixedUpdate() {}
         virtual void onCollision(Collision<Entity> collision) {} 
-        virtual void mouseUp(SDL_Event event) {}
-        virtual void mouseDown(SDL_Event event) {}
+        virtual void mouseUp(int posX, int posY) {}
+        virtual void mouseDown(int posX, int posY) {}
         virtual ~Entity();
     };
 }

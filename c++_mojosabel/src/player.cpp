@@ -26,15 +26,15 @@ namespace mojosabel {
 
     void Player::move()
     {
-        if(sys.keyboard[SDL_SCANCODE_W] && !(checkDirection("Up"))) { rect.y -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_S] && !(checkDirection("Down"))) { rect.y += speed; }
-        if(sys.keyboard[SDL_SCANCODE_A] && !(checkDirection("Left"))) { rect.x -= speed; }
-        if(sys.keyboard[SDL_SCANCODE_D] && !(checkDirection("Right"))) { rect.x += speed; }
+        if(sys.keyboard[KEY_W] && !(checkDirection("Up"))) { rect.y -= speed; }
+        if(sys.keyboard[KEY_S] && !(checkDirection("Down"))) { rect.y += speed; }
+        if(sys.keyboard[KEY_A] && !(checkDirection("Left"))) { rect.x -= speed; }
+        if(sys.keyboard[KEY_D] && !(checkDirection("Right"))) { rect.x += speed; }
     }
 
-    void Player::mouseDown(SDL_Event event)
+    void Player::mouseDown(int x, int y)
     {
-        fire(event.button.x, event.button.y);
+        fire(x, y);
     }
 
     void Player::fire(int x, int y)

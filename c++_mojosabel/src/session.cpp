@@ -82,13 +82,13 @@ namespace mojosabel {
 
     void Session::checkAllCollisions(Entity* entityToCheck)
     { 
-        if (!entityToCheck->hasCollision) { return; }
+        if (!entityToCheck->getCollision()) { return; }
         
         for (Entity* entity : entities) // för varje entities i sessions vec
         {
-            if (entity != entityToCheck && entity->hasCollision) // om entityn vi är på inte är det vi vill kolla och har collision
+            if (entity != entityToCheck && entity->getCollision()) // om entityn vi är på inte är det vi vill kolla och har collision
             {
-                if (checkCollision(entityToCheck->rect, entity->rect)) // kollar först om objektens rects kolliderar
+                if (checkCollision(*entityToCheck->getRect(), *entity->getRect())) // kollar först om objektens rects kolliderar
                 {   
                     if (entityToCheck->hasColliders() && entity->hasColliders()) // om båda har colliders: jämför båda objektens colliders med varje av den andres colliders
                     {
@@ -103,7 +103,7 @@ namespace mojosabel {
                     }
                     else if (!entityToCheck->hasColliders() && entity->hasColliders()) // om objektet vi är på har fler colliders: kolla objektet vi vill kollas rect med varje collider i objektet vi är på
                     {
-                        if (checkColliders(entityToCheck->rect, entity->getColliders())) 
+                        if (checkColliders(*entityToCheck->getRect(), entity->getColliders())) 
                         {
                             Collision<Entity> col = Collision(entity, entity->tag);
                             entityToCheck->onCollision(col);
@@ -111,7 +111,7 @@ namespace mojosabel {
                     }
                     else if (entityToCheck->hasColliders() && !entity->hasColliders()) // om objektet vi vill kolla har fler colliders men objektet vi är på inte har det, jämför 
                     {
-                        if (checkColliders(entity->rect, entityToCheck->getColliders()))
+                        if (checkColliders(*entity->getRect(), entityToCheck->getColliders()))
                         {
                             Collision<Entity> col = Collision(entity, entity->tag);
                             entityToCheck->onCollision(col);
@@ -190,14 +190,14 @@ namespace mojosabel {
                         rootCanvas->handleMouseDown(event);
                         for (Entity* e : entities)
                         {
-                            e -> mouseDown(event);
+                            e -> mouseDown(event.button.x, event.button.y);
                         }
                         break;
                     case SDL_MOUSEBUTTONUP:
                         rootCanvas->handleMouseUp(event);
                         for (Entity* e : entities)
                         {
-                            e -> mouseUp(event);
+                            e -> mouseUp(event.button.x, event.button.y);
                         }
                         break;
                     case SDL_KEYDOWN:

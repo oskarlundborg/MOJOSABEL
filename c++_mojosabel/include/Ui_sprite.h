@@ -5,9 +5,9 @@
 
 
 namespace mojosabel {
-    class Ui_sprite : public Sprite {
-    private:
-        
+
+    class Ui_sprite : public Sprite 
+    {  
     protected:
         std::string text;
         SDL_Texture* texture;

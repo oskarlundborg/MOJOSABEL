@@ -4,9 +4,8 @@
 #include <SDL2/SDL.h>
 namespace mojosabel {
 
-    class Collider 
+    struct Collider 
     {
-    public:
         int xOffset, yOffset;
         SDL_Rect rect;
         Collider() = delete;
