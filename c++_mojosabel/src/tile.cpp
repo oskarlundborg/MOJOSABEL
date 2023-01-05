@@ -29,4 +29,10 @@ namespace mojosabel {
     {
         return e1->getLayer() < e2->getLayer();
     }
+
+    Tile::~Tile()
+    {
+        for(Entity* p : tileObjects) { delete p; }
+        tileObjects.clear();
+    }
 }

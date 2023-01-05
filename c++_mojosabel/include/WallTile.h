@@ -9,8 +9,8 @@ namespace mojosabel{
     class WallTile : public Entity
     {
     public:
-        const bool blocked = true;
         WallTile(int xPos, int yPos, std::string texture);
+        WallTile() = delete;
     };
 }
 #endif

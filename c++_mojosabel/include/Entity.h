@@ -26,6 +26,8 @@ namespace mojosabel {
         std::vector<Collider> colliders;
 
     public:
+        Entity(const Entity* other) = delete;
+        const Entity operator=(const Entity& rhs) = delete;
         const std::string tag;
         void setCollision(const bool toSet);
         bool hasColliders();

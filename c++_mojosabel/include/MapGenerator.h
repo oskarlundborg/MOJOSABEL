@@ -17,6 +17,9 @@ namespace mojosabel {
         void smoothMap();
 
     public:
+        MapGenerator() = delete;
+        MapGenerator(const MapGenerator* other) = delete;
+        const MapGenerator operator=(const MapGenerator& rhs) = delete;
         MapGenerator(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit)
             : smoothMapCount(smoothMap), randomFillProcent(fillPercent), smoothWalkableLimit(smoothWalkableLimit), smoothUnwalkableLimit(smoothUnwalkableLimit) {}
         void genereateIntMap();

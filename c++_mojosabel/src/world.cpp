@@ -28,4 +28,11 @@ namespace mojosabel {
     {
         levels[currentLevel]->drawTiles();
     }
+
+    World::~World()
+    {
+        for (Level* p : levels) { delete p; }
+        levels.clear();
+        delete mapGenerator;
+    }
 }

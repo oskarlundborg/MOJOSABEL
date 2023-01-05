@@ -14,7 +14,6 @@ namespace mojosabel {
         Vector2(SDL_Rect rect) : x(rect.x), y(rect.y) {}
         Vector2(int x, int y) : x(x), y(y) {}
         Vector2 moveTowards(Vector2 target, int speed);
-        Vector2 lerp(Vector2 a, Vector2 b, float t);
         float distance(Vector2 a, Vector2 b);
 
         Vector2 operator+(const Vector2& rhs);

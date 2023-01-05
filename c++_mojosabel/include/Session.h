@@ -27,10 +27,13 @@ namespace mojosabel {
 
     public:
         Session();
+        Session(const Session* other) = delete;
+        const Session operator=(const Session& rhs) = delete;
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
         void createNewWorld(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit);
         void run();
+        void clearEntities();
         World* getWorld() { return world; }
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};

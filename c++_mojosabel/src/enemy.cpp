@@ -4,13 +4,6 @@
 
 namespace mojosabel {
 
-    Enemy::Enemy() : GameObject()
-    {
-        health = 0;
-        speed = 0;
-        mF = moveLeft;
-    }
-
     Enemy::Enemy(int x, int y) : Enemy(x, y, 32, 32, 0, "Enemy", 1)
     {
         

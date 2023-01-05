@@ -10,6 +10,7 @@ namespace mojosabel {
         T* object;
         const std::string tag;
         Collision(T* object, std::string tag) : object(object), tag(tag) {}
+        Collision() = delete;
     };
 }
 

@@ -19,6 +19,13 @@ namespace mojosabel{
         ses.add(object);
         }
     }
+
+    template <typename T>
+    void generateGameObjects(Level* level, int lowest, int highest)
+    {
+        int i = rand() % (highest - lowest) + lowest;
+        generateGameObjects<T>(level, i);
+    }
 }
 
 #endif

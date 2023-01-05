@@ -15,7 +15,7 @@ namespace mojosabel {
     public:
         void setText(std::string text);
         std::string getText() const { return text; }
-        ~Ui_sprite();
+        virtual ~Ui_sprite();
     };
 }
 
