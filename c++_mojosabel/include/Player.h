@@ -10,13 +10,12 @@ namespace mojosabel {
     private:
         int health;
     public:
-        Player();
+        Player() = delete;
         Player(int x, int y, int w, int h, int layer, std::string tag, int speed);
         void move();
         void update();
         void fire(int x, int y);
         void mouseDown(int x, int y);
-        virtual ~Player() {}
     };
 }
 #endif

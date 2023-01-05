@@ -8,8 +8,8 @@ namespace mojosabel{
     class FloorTile : public Entity
     {
     public:
-        const bool blocked = false;
         FloorTile(int xPos, int yPos, std::string texture);
+        FloorTile() = delete;
     };
 }
 #endif

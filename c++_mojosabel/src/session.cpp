@@ -253,7 +253,22 @@ namespace mojosabel {
         }
     }
 
-    Session::~Session(){}
+    void Session::clearEntities()
+    {
+        for (Entity* p : entities) { delete p; }
+        for (Entity* p : addedEntities) { delete p; }
+        for (Entity* p : removedEntities) { delete p; }
+        entities.clear();
+        addedEntities.clear();
+        removedEntities.clear();
+    }
+
+    Session::~Session()
+    {
+        clearEntities();
+        delete world;
+        delete rootCanvas;
+    }
 
     Session ses;
 }

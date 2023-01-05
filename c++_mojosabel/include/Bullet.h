@@ -10,7 +10,7 @@ namespace mojosabel {
     {
     public:
         Vector2 target;
-        Bullet() : GameObject() { speed = 0; }
+        Bullet() = delete;
         Bullet(int x, int y, int w, int h, int layer, std::string tag, int speed, int targetX, int targetY);
         int speed;
         void update();

@@ -16,6 +16,8 @@ namespace mojosabel
 
     public:
         System();
+        System(const System* other) = delete;
+        const System operator=(const System& rhs) = delete;
         ~System();
         SDL_Renderer* getRen() const;
         TTF_Font* getFont() const;

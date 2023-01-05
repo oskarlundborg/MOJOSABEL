@@ -13,7 +13,10 @@ namespace mojosabel
     
     public:
         Tilemap();
+        Tilemap(const Tilemap* other) = delete;
+        const Tilemap operator=(const Tilemap& rhs) = delete;
         Tile* operator()(int x, int y){return map[x][y];}
+        ~Tilemap();
     };
 }
 

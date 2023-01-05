@@ -12,6 +12,9 @@ class Level {
         std::vector<Vector2> walkableTiles;
 
     public:
+        Level() = delete;
+        Level(const Level* level) = delete;
+        const Level operator=(const Level& rhs) = delete;
         Level(std::string walkableTexturePath, std::string unwalkableTexturePath) 
             : walkableTexturePath(walkableTexturePath), unwalkableTexturePath(unwalkableTexturePath) {}
         void drawTiles();

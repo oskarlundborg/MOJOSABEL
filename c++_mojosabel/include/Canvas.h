@@ -18,6 +18,8 @@ namespace mojosabel {
     public:
         Canvas() : Canvas(0, 0, 0, 0) {}
         Canvas(int x, int y, int w, int h) { xPos = x, yPos = y, width = w, height = h; }
+        Canvas(const Canvas* other) = delete;
+        const Canvas operator=(const Canvas& rhs) = delete;
         int x() { return xPos; }
         int y() { return yPos; }
         int w() { return width; }

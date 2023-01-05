@@ -10,7 +10,7 @@ namespace mojosabel {
     public:
         int direction = 0;
         int health;
-        Enemy();
+        Enemy() = delete;
         Enemy(int x, int y);
         Enemy(int x, int y, int w, int h, int layer, std::string name, int speed);
         void onCollision(Collision<Entity> collision);
