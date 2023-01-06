@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
 
-    ses.createNewWorld(3, 49, 4, 4);
+    ses.createNewWorld(2, 48, 5, 4);
     ses.getWorld()->newLevel("images/GrassTile.png", "images/GrayWall.png");
 
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
