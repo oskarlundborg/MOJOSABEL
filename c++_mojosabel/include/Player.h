@@ -12,10 +12,10 @@ namespace mojosabel {
     public:
         Player() = delete;
         Player(int x, int y, int w, int h, int layer, int speed);
-        void move();
-        void update();
-        void fire(int x, int y);
-        void mouseDown(int x, int y);
+        virtual void move();
+        virtual void update();
+        virtual void fire(int x, int y);
+        virtual void mouseDown(int x, int y);
         virtual bool levelCompleted() { return true; }
     };
 }

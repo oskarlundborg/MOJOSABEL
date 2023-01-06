@@ -13,9 +13,9 @@ namespace mojosabel {
     public:
         Bullet() = delete;
         Bullet(int x, int y, int w, int h, int layer, std::string tag, int speed, int targetX, int targetY);
-        void update();
-        void move();
-        void onCollision(Collision<Entity> collision);
+        virtual void update();
+        virtual void move();
+        virtual void onCollision(Collision<Entity> collision);
     };
 }
 #endif

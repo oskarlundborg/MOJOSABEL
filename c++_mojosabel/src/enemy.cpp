@@ -21,18 +21,7 @@ namespace mojosabel {
         move();
     }
 
-    void Enemy::fixedUpdate()
-    {
-        if (direction == 0)
-        {
-            direction = 1;
-        }
-        else if (direction == 1)
-        {
-            direction = 0;
-        }
-    }
-
+  
     void Enemy::move()
     {
         if(checkDirection("Left")){
@@ -42,11 +31,5 @@ namespace mojosabel {
         }
 
         mF(this);
-    }
-        
-
-    void Enemy::onCollision(Collision<Entity> collision)
-    {
-        if (collision.tag == "Bullet") { destroy(this); }
     }
 }
