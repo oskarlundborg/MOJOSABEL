@@ -7,7 +7,7 @@ namespace mojosabel {
 
     class Enemy : public GameObject
     {
-    private:
+    protected:
         int health;
     public:
         Enemy() = delete;

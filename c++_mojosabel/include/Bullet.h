@@ -8,7 +8,7 @@ namespace mojosabel {
 
     class Bullet : public GameObject
     {
-    private:
+    protected:
         Vector2 target;
     public:
         Bullet() = delete;

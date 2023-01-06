@@ -19,35 +19,11 @@ using namespace mojosabel;
 int value = 0;
 Canvas* UI;
 
-class IncreaseButton : public Ui_button
-{
-    public:
-        IncreaseButton(Ui_label *lbl) : Ui_button(150, 0, 50, 25, "Oka"), ui_label(lbl) {}
-        void perform(Ui_button* source)
-        {
-            value++;
-            ui_label -> setText(std::to_string(value));
-        }
-    private:
-        Ui_label* ui_label;
-};
 
-class DecreaseButton : public Ui_button
-{
-    public:
-        DecreaseButton(Ui_label *lbl) : Ui_button(300, 0, 100, 25, "Minska"), ui_label(lbl) {}
-        void perform(Ui_button* source)
-        {
-            value--;
-            ui_label -> setText(std::to_string(value));
-        }
-    private:
-        Ui_label* ui_label;
-};
 
 void nextLevelFunc()
 {
-    ses.getWorld()->newLevel("images/GrassTile.png", "images/GrayWall.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
 };
 
 void enemiesToNextLevel()
@@ -61,10 +37,10 @@ int main(int argc, char* argv[])
     std::cout << "***main***" << std::endl;
 
     UI = ses.getRootCanvas();
-    UI->addUiSprite(Ui_label::getInstance(0, 0, 100, 25, "MOJOSABEL"));
+    UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -100), 0, 400, 100, "WOW SEA ADVENTURE 400"));
 
     ses.createNewWorld(2, 48, 5, 4);
-    ses.getWorld()->newLevel("images/GrassTile.png", "images/GrayWall.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
 
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;
@@ -78,14 +54,7 @@ int main(int argc, char* argv[])
     ses.addLoadLevelFunc(nextLevelFunc);
     ses.addLoadLevelFunc(enemiesToNextLevel);
 
-    Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
-	UI->addUiSprite(lbl);
-
-    Ui_button* b1 = new IncreaseButton(lbl);
-    UI->addUiSprite(b1);
-
-    Ui_button* b2 = new DecreaseButton(lbl);
-    UI->addUiSprite(b2);
+    
     
     ses.run();
 
@@ -94,8 +63,3 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-/*
-    - Klasshierarkin och sprites + components
-    - DLL-processen - mer info om library?
-    - canvas position hantering
-*/
