@@ -22,6 +22,7 @@ namespace mojosabel {
         World(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit);
         void newLevel(std::string walkableTexturePath, std::string unwalkableTexturePath);
         void drawCurrentLevel();
+        const int getCurrentLevelIndex() { return currentLevel; }
         Level* getCurrentLevel() { return levels[currentLevel]; }
         MapGenerator* getMapGenerator() { return mapGenerator; }
         ~World();

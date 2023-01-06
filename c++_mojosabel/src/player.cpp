@@ -11,6 +11,7 @@ namespace mojosabel {
         : GameObject (x, y, w, h, layer, "Player")
     {
         speed = sp;
+        setCollision(true);
     }
     
     void Player::update()

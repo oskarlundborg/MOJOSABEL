@@ -250,29 +250,42 @@ namespace mojosabel {
             rootCanvas->drawSprites();
             SDL_RenderPresent(sys.getRen());
             capFrameRate(&renderTime, &remainder);
+
+            if(loadNextLevel)
+            {
+                for(loadLevelFunc f : funcsOnLoadLevel)
+                {
+                    f();
+                }
+                loadNextLevel = false;
+            }
         }
     }
 
     void Session::clearEntities()
     {
         for (Entity* p : entities) { delete p; }
-        for (Entity* p : addedEntities) { delete p; }
-        for (Entity* p : removedEntities) { delete p; }
         entities.clear();
-        addedEntities.clear();
-        removedEntities.clear();
     }
 
     void Session::clearEntitiesExcept(std::string tag)
     {
         Entity* temp = findEntity(tag);
-        clearEntities();
+        for (Entity* p : entities) 
+        { 
+            if(p->tag != tag)
+            {
+                delete p;
+            }
+        }
+        entities.clear();
         entities.push_back(temp);
     }
 
     Session::~Session()
     {
         clearEntities();
+        funcsOnLoadLevel.clear();
         delete world;
         delete rootCanvas;
     }

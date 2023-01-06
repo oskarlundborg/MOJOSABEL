@@ -15,8 +15,11 @@ namespace mojosabel {
         World* world;
         long renderTime; //tiden det tog för förra framen att rendera
         float remainder; 
+        bool loadNextLevel = false;
         Canvas *rootCanvas;
-        std::vector<Entity*> entities, addedEntities, removedEntities; 
+        std::vector<Entity*> entities, addedEntities, removedEntities;
+        typedef void (*loadLevelFunc)();
+        std::vector<loadLevelFunc> funcsOnLoadLevel;
         void doKeyUp(SDL_KeyboardEvent* event);
         void doKeyDown(SDL_KeyboardEvent* event);
         bool entityExists(Entity* entity); //loopa genom alla entities, om en entity är samma returnera true, annars returnera false efter loopen
@@ -35,6 +38,8 @@ namespace mojosabel {
         void run();
         void clearEntities();
         void clearEntitiesExcept(std::string tag);
+        void setLoadNextLevel(bool toSet) { loadNextLevel = toSet; }
+        void addLoadLevelFunc(loadLevelFunc funcToAdd) { funcsOnLoadLevel.push_back(funcToAdd); }
         World* getWorld() { return world; }
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};

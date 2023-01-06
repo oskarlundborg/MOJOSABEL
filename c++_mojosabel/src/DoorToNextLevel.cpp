@@ -18,7 +18,7 @@ namespace mojosabel {
             if (player->levelCompleted())
             {   
                 std::cout << "level completed" << std::endl;
-                ses.getWorld()->newLevel(ses.getWorld()->getCurrentLevel()->getWalkableTexPath(), ses.getWorld()->getCurrentLevel()->getUnwalkableTexPath());
+                ses.setLoadNextLevel(true);
             }
         }
     }

@@ -45,6 +45,16 @@ class DecreaseButton : public Ui_button
         Ui_label* ui_label;
 };
 
+void nextLevelFunc()
+{
+    ses.getWorld()->newLevel("images/GrassTile.png", "images/GrayWall.png");
+};
+
+void enemiesToNextLevel()
+{
+    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), ses.getWorld()->getCurrentLevelIndex() + 5, "images/Spaceship.png", true);
+}
+
 int main(int argc, char* argv[]) 
 {
 
@@ -64,6 +74,9 @@ int main(int argc, char* argv[])
     ses.add(player);
 
     generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), 5, "images/Spaceship.png", true );
+
+    ses.addLoadLevelFunc(nextLevelFunc);
+    ses.addLoadLevelFunc(enemiesToNextLevel);
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	UI->addUiSprite(lbl);
