@@ -22,6 +22,8 @@ class Level {
         void checkForFloor();
         bool isTileWall(int x, int y);
         const Vector2 generateSpawnPosition() const; // möjligen enemypointer 
+        std::string getWalkableTexPath() { return walkableTexturePath; }
+        std::string getUnwalkableTexPath() { return unwalkableTexturePath; }
     };
 }
 

@@ -59,11 +59,11 @@ int main(int argc, char* argv[])
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;
     int spawnY = spawnPos.y;
-    Player* player = new Player(spawnX, spawnY, 32, 32, 0, "Player", 3);
+    Player* player = new Player(spawnX, spawnY, 32, 32, 0, 3);
     player->loadTexture(constants::gResPath + "images/Spaceship.png");
     ses.add(player);
 
-    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), 5);
+    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), 5, "images/Spaceship.png", true );
 
     Ui_label* lbl = Ui_label::getInstance(235, 0, 25, 25, "0");
 	UI->addUiSprite(lbl);

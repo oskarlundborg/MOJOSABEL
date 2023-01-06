@@ -263,6 +263,13 @@ namespace mojosabel {
         removedEntities.clear();
     }
 
+    void Session::clearEntitiesExcept(std::string tag)
+    {
+        Entity* temp = findEntity(tag);
+        clearEntities();
+        entities.push_back(temp);
+    }
+
     Session::~Session()
     {
         clearEntities();

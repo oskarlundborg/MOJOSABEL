@@ -6,7 +6,7 @@
 
 namespace mojosabel{
     template <typename T>
-    void generateGameObjects(Level* level, int amount)
+    void generateGameObjects(Level* level, int amount, std::string texPath, bool collision)
     {
         for(int i = 0; i < amount; i++)
         {
@@ -14,17 +14,10 @@ namespace mojosabel{
         int spawnX = spawnPos.x;
         int spawnY = spawnPos.y;
         T* object = new T(spawnX, spawnY);
-        object->loadTexture(constants::gResPath + "images/Spaceship.png");
-        object->setCollision(true);
+        object->loadTexture(constants::gResPath + texPath);
+        object->setCollision(collision);
         ses.add(object);
         }
-    }
-
-    template <typename T>
-    void generateGameObjects(Level* level, int lowest, int highest)
-    {
-        int i = rand() % (highest - lowest) + lowest;
-        generateGameObjects<T>(level, i);
     }
 }
 

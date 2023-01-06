@@ -34,6 +34,7 @@ namespace mojosabel {
         void createNewWorld(int smoothMap, int fillPercent, int smoothWalkableLimit, int smoothUnwalkableLimit);
         void run();
         void clearEntities();
+        void clearEntitiesExcept(std::string tag);
         World* getWorld() { return world; }
         ~Session();
         Canvas* getRootCanvas() {return rootCanvas;};

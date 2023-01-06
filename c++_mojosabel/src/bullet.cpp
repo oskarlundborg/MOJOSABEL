@@ -32,16 +32,7 @@ namespace mojosabel {
     {
         setPosition(position().moveTowards(target, speed));
     }
-
-    void Bullet::findClosestEnemy()
-    {
-        if (ses.findEntity("Enemy") != nullptr)
-        {
-            target = ses.findEntity("Enemy")->position();
-        }
-        
-    }
-
+    
     void Bullet::onCollision(Collision<Entity> collision)
     {
         if (collision.tag == "Enemy") 
@@ -54,7 +45,6 @@ namespace mojosabel {
         {
             destroy(this);
         }
-        
     }
 
 }

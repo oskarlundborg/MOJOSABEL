@@ -7,8 +7,8 @@
 
 namespace mojosabel {
 
-    Player::Player(int x, int y, int w, int h, int layer, std::string name, int sp)
-        : GameObject (x, y, w, h, layer, name)
+    Player::Player(int x, int y, int w, int h, int layer, int sp)
+        : GameObject (x, y, w, h, layer, "Player")
     {
         speed = sp;
     }
