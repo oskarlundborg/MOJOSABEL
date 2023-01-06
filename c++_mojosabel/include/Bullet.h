@@ -8,15 +8,14 @@ namespace mojosabel {
 
     class Bullet : public GameObject
     {
-    public:
+    private:
         Vector2 target;
+    public:
         Bullet() = delete;
         Bullet(int x, int y, int w, int h, int layer, std::string tag, int speed, int targetX, int targetY);
-        int speed;
         void update();
         void move();
         void onCollision(Collision<Entity> collision);
-        void findClosestEnemy();
     };
 }
 #endif

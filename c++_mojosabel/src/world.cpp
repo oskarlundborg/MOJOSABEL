@@ -1,5 +1,8 @@
 #include <string>
+#include "Session.h"
 #include "World.h"
+#include "GameObjectGenerator.h"
+#include "DoorToNextLevel.h"
 
 namespace mojosabel {
     
@@ -16,12 +19,18 @@ namespace mojosabel {
         }
         else 
         {
+            ses.clearEntitiesExcept("Player");
             currentLevel++;
         }
         Level* level = new Level(walkableTexturePath, unwalkableTexturePath); 
         levels.push_back(level);
         mapGenerator->genereateIntMap();
         mapGenerator->mixMap(level);
+        if (Entity* player = ses.findEntity("Player"))
+        {
+            player->setPosition(level->generateSpawnPosition());
+        }
+        generateGameObjects<DoorToNextLevel>(level, 1, "images/Beaver.png", true);
     }
 
     void World::drawCurrentLevel()
