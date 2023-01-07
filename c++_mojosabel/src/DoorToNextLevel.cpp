@@ -13,7 +13,6 @@ namespace mojosabel {
     {
         if (collision.tag == "Player")
         {
-            std::cout << "collision med player" << std::endl;
             Player* player = static_cast<Player*>(collision.object);
             if (player->levelCompleted())
             {   

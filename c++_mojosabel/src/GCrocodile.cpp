@@ -25,7 +25,7 @@ void GCrocodile::update(){
 
 void GCrocodile::checkHealth()
 {
-    if (health < 0)
+    if (health <= 0)
     {
         destroy(this);
     }
