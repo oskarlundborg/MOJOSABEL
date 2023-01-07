@@ -19,11 +19,9 @@ using namespace mojosabel;
 int value = 0;
 Canvas* UI;
 
-
-
 void nextLevelFunc()
 {
-    ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
 };
 
 void enemiesToNextLevel()
@@ -40,7 +38,7 @@ int main(int argc, char* argv[])
     UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 0, 400, 100, "WOW SEA ADVENTURE 4000"));
 
     ses.createNewWorld(2, 48, 5, 4);
-    ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
 
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;
@@ -53,8 +51,6 @@ int main(int argc, char* argv[])
 
     ses.addLoadLevelFunc(nextLevelFunc);
     ses.addLoadLevelFunc(enemiesToNextLevel);
-
-    
     
     ses.run();
 

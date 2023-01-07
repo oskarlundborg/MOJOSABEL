@@ -20,6 +20,7 @@ class GTurtle : public Player
         void die();
         void update();
         bool levelCompleted();
+        void resetForNewLevel();
 };
 
 #endif

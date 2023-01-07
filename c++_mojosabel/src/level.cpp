@@ -58,4 +58,15 @@ namespace mojosabel{
         Vector2 vec = walkableTiles[i];
         return vec;
     }
+
+    void Level::clearWallPointers()
+    {
+        for(int x = 0; x < MAP_WIDTH; x++)
+        {
+            for(int y = 0; y < MAP_HEIGHT; y++)
+            {
+                if (tilemap(x, y)->getTopLayer()->tag == "Wall") { tilemap(x, y)->clear(); }
+            }
+        }      
+    }
 }

@@ -264,12 +264,14 @@ namespace mojosabel {
 
     void Session::clearEntities()
     {
+        world->getCurrentLevel()->clearWallPointers();
         for (Entity* p : entities) { delete p; }
         entities.clear();
     }
 
     void Session::clearEntitiesExcept(std::string tag)
     {
+        world->getCurrentLevel()->clearWallPointers();
         Entity* temp = findEntity(tag);
         for (Entity* p : entities) 
         { 

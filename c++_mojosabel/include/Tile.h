@@ -18,8 +18,8 @@ namespace mojosabel {
         Entity* getTopLayer() { return tileObjects[0]; } // när vi ritar ut tiles i tilemap så hämtar vi det översta lagret och ritar ut det.
         void add(Entity* entityToAdd);
         void remove(Entity* entityToRemove);
+        void clear() { tileObjects.clear(); }
         ~Tile();
-        
     }; 
     bool compareLayer(Entity* e1, Entity* e2);
 }

@@ -32,7 +32,10 @@ namespace mojosabel {
 
     Tile::~Tile()
     {
-        for(Entity* p : tileObjects) { delete p; }
+        for(Entity* p : tileObjects) 
+        { 
+           delete p;  
+        }
         tileObjects.clear();
     }
 }

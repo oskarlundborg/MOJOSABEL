@@ -24,6 +24,8 @@ class Level {
         const Vector2 generateSpawnPosition() const; // möjligen enemypointer 
         std::string getWalkableTexPath() { return walkableTexturePath; }
         std::string getUnwalkableTexPath() { return unwalkableTexturePath; }
+        void clearWallPointers();
+        Tile* getTile(int x, int y) { return tilemap(x, y); }
     };
 }
 

@@ -5,6 +5,8 @@
 #include "Ui_sprite.h"
 #include "Ui_button.h"
 #include "GShellBullet.h"
+#include "GameObjectGenerator.h"
+#include "GCrocodile.h"
 
 
 GTurtle::GTurtle(int x, int y, int startHealth) : Player(x, y, 32, 32, 0, 3)
@@ -17,7 +19,7 @@ GTurtle::GTurtle(int x, int y, int startHealth) : Player(x, y, 32, 32, 0, 3)
 void GTurtle::adjustHealth(int changeHealth){
     if((health + changeHealth) <= 0){
         health = 0;
-        std::cout << "dead" << std::endl;
+        healthBar->setText("Health: " + std::to_string(getHealth()));
         die();
         setCollision(false);
     } else {
@@ -56,23 +58,34 @@ bool GTurtle::levelCompleted(){
 
 class NewGameButton : public Ui_button
 {
+    private:
+        bool isClickable = true;
+        Canvas* canvas;
     public:
-        NewGameButton() : Ui_button((SCREEN_WIDTH/2 -100), 400, 200, 100, "New Game") {}
+        NewGameButton(Canvas* c) : Ui_button((SCREEN_WIDTH/2 -100), 400, 200, 100, "New Game") { canvas = c; }
         void perform(Ui_button* source)
         {
-            ses.clearEntitiesExcept("Player");
-            delete ses.getWorld();
-            ses.createNewWorld(2, 48, 5, 4);
-            ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
-            std::cout << "yay new world" << std::endl;
+            if (isClickable == true) {
+                ses.clearEntitiesExcept("Player");
+                delete ses.getWorld();
+                ses.createNewWorld(2, 48, 5, 4);
+                ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
+                GTurtle* player = static_cast<GTurtle*>(ses.findEntity("Player"));
+                generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), 5, "images/Crocodile.png", true );
+                player->resetForNewLevel();
+                isClickable = false;
+                ses.getRootCanvas()->removeCanvas(canvas);
+            }
         }
 };
 
 
 void GTurtle::die(){
-    ses.getRootCanvas()->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 200, 400, 80, "Oh no! You died"));
-    Ui_button* uiButton = new NewGameButton();
-    ses.getRootCanvas()->addUiSprite(uiButton);
+    Canvas* c = new Canvas(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    c->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 200, 400, 80, "Oh no! You died"));
+    Ui_button* uiButton = new NewGameButton(c);
+    c->addUiSprite(uiButton);
+    ses.getRootCanvas()->addCanvas(c);
     canShoot = false;
 }
 
@@ -83,5 +96,11 @@ void GTurtle::fire(int x, int y)
     bullet->setCollision(true);
     instantiate(bullet);
     hasColliders();
+}
+
+void GTurtle::resetForNewLevel() 
+{
+    setHealth(100);
+    healthBar->setText("Health: " + std::to_string(getHealth()));
 }
 

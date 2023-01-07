@@ -8,7 +8,7 @@ namespace mojosabel {
 
     void Canvas::removeCanvas(Canvas* canvasToRemove)
     {
-        for (std::vector<Canvas*>::iterator it = canvases.begin(); it != canvases.end(); ++it)
+        for (std::vector<Canvas*>::iterator it = canvases.begin(); it <= canvases.end(); ++it)
         {
             if (canvasToRemove == *it)
             {
@@ -39,6 +39,11 @@ namespace mojosabel {
         for (Ui_sprite* s : uiSprites)
         {
             s->draw();
+        }
+
+        for (Canvas* c : canvases)
+        {
+            c->drawSprites();
         }
     }
 
