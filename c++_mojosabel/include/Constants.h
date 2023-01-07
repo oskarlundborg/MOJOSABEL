@@ -6,12 +6,12 @@
 
 namespace constants
 {
-    #define SCREEN_WIDTH 1600
-    #define SCREEN_HEIGHT 960
+    #define SCREEN_WIDTH 1280
+    #define SCREEN_HEIGHT 720
     #define MAX_KEYBOARD_KEYS 350
     #define TILE_SIZE 32
-    #define MAP_WIDTH 50
-    #define MAP_HEIGHT 30
+    #define MAP_WIDTH 40
+    #define MAP_HEIGHT 22
 
     //gResPath-contains the relative path to your resources.
 	const std::string gResPath = "resources/";

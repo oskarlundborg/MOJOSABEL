@@ -9,15 +9,15 @@ using namespace mojosabel;
 class GCrocodile : public Enemy
 {
 private:
-    bool hasPlayer;
+    bool hasPlayer = false;
     Player* playerPtr;
 public:
     
     GCrocodile(int x, int y) : Enemy(x, y) {}
     void update();
-    void move();
-    void onCollision(Collision<Entity> collision);
+    void moveToPlayer();
     void attack();
+    bool checkPlayerDistance();
     
     void setHasPlayer(bool toSet) { hasPlayer = toSet; }
     bool getHasPlayer() { return hasPlayer; }

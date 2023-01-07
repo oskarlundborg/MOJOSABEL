@@ -6,12 +6,12 @@
 #include "Ui_sprite.h"
 #include "Ui_button.h"
 #include "Canvas.h"
-#include "Player.h"
 #include "Constants.h"
 #include "Entity.h"
-#include "Enemy.h"
 #include "MapGenerator.h"
 #include "GameObjectGenerator.h"
+#include "GCrocodile.h"
+#include "GTurtle.h"
 
 
 using namespace mojosabel;
@@ -28,7 +28,7 @@ void nextLevelFunc()
 
 void enemiesToNextLevel()
 {
-    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), ses.getWorld()->getCurrentLevelIndex() + 5, "images/Spaceship.png", true);
+    generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), ses.getWorld()->getCurrentLevelIndex() + 5, "images/Crocodile.png", true);
 }
 
 int main(int argc, char* argv[]) 
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
     std::cout << "***main***" << std::endl;
 
     UI = ses.getRootCanvas();
-    UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -100), 0, 400, 100, "WOW SEA ADVENTURE 400"));
+    UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 0, 400, 100, "WOW SEA ADVENTURE 4000"));
 
     ses.createNewWorld(2, 48, 5, 4);
     ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
@@ -45,11 +45,11 @@ int main(int argc, char* argv[])
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;
     int spawnY = spawnPos.y;
-    Player* player = new Player(spawnX, spawnY, 32, 32, 0, 3);
-    player->loadTexture(constants::gResPath + "images/Spaceship.png");
+    GTurtle* player = new GTurtle(spawnX, spawnY, 100);
+    player->loadTexture(constants::gResPath + "images/Turtle.png");
     ses.add(player);
 
-    generateGameObjects<Enemy>(ses.getWorld()->getCurrentLevel(), 5, "images/Spaceship.png", true );
+    generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), 5, "images/Crocodile.png", true );
 
     ses.addLoadLevelFunc(nextLevelFunc);
     ses.addLoadLevelFunc(enemiesToNextLevel);

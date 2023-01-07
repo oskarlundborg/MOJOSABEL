@@ -12,6 +12,8 @@ namespace mojosabel {
     public:
         Player() = delete;
         Player(int x, int y, int w, int h, int layer, int speed);
+        int getHealth() { return health; }
+        void setHealth(int healthToSet) {health = healthToSet; }
         virtual void move();
         virtual void update();
         virtual void fire(int x, int y);

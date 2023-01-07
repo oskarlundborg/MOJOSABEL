@@ -12,6 +12,7 @@ namespace mojosabel {
     {
         speed = sp;
         setCollision(true);
+        std::cout << "player instantiated" << std::endl;
     }
     
     void Player::update()
