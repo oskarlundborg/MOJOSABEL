@@ -4,9 +4,10 @@
 #include "Ui_label.h"
 #include "Ui_sprite.h"
 #include "Ui_button.h"
+#include "GShellBullet.h"
 
 void GTurtle::adjustHealth(int changeHealth){
-    if((health += changeHealth) <= 0){
+    if((health + changeHealth) <= 0){
         health = 0;
         std::cout << "dead" << std::endl;
         die();
@@ -40,14 +41,30 @@ class NewGameButton : public Ui_button
 {
     public:
         NewGameButton() : Ui_button((SCREEN_WIDTH/2 -100), 400, 200, 100, "New Game") {}
-        void perform(Ui_button source)
+        void perform(Ui_button* source)
         {
-            //start new game
+            // ses.clearEntitiesExcept("Player");
+            // delete ses.getWorld();
+            // ses.createNewWorld(2, 48, 5, 4);
+            std::cout << "yay new world" << std::endl;
         }
 };
+
 
 void GTurtle::die(){
     ses.getRootCanvas()->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 200, 400, 80, "Oh no! You died"));
     Ui_button* uiButton = new NewGameButton();
     ses.getRootCanvas()->addUiSprite(uiButton);
+    canShoot = false;
 }
+
+void GTurtle::fire(int x, int y)
+{
+    std::cout << "fire" << std::endl;
+    GShellBullet *bullet = new GShellBullet(rect.x, rect.y, x, y);
+    bullet->loadTexture(constants::gResPath + "images/Bullet.png");
+    bullet->setCollision(true);
+    instantiate(bullet);
+    hasColliders();
+}
+

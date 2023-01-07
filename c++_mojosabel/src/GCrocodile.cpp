@@ -23,8 +23,12 @@ void GCrocodile::update(){
     }
 }
 
-void GCrocodile::attack(){
-    
+void GCrocodile::checkHealth()
+{
+    if (health < 0)
+    {
+        destroy(this);
+    }
 }
 
 void GCrocodile::moveToPlayer(){

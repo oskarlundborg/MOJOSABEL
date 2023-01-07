@@ -16,7 +16,8 @@ public:
     GCrocodile(int x, int y) : Enemy(x, y) {}
     void update();
     void moveToPlayer();
-    void attack();
+    void checkHealth();
+    //void attack();
     bool checkPlayerDistance();
     
     void setHasPlayer(bool toSet) { hasPlayer = toSet; }
