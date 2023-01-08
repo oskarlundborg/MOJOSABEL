@@ -20,6 +20,7 @@ namespace mojosabel {
         void remove(Entity* entityToRemove);
         void clear() { tileObjects.clear(); }
         ~Tile();
+        void setTopLayer(Entity* entity) { tileObjects[0] = entity; }
     }; 
     bool compareLayer(Entity* e1, Entity* e2);
 }
