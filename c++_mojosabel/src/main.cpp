@@ -21,7 +21,7 @@ Canvas* UI;
 
 void nextLevelFunc()
 {
-    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithLilyPad.png");
 };
 
 void enemiesToNextLevel()
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), SCREEN_HEIGHT-100, 400, 100, "KILL ALL CROCODILES"));
 
     ses.createNewWorld(2, 48, 5, 4);
-    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
+    ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithLilyPad.png");
 
     Vector2 spawnPos = ses.getWorld()->getCurrentLevel()->generateSpawnPosition();
     int spawnX = spawnPos.x;

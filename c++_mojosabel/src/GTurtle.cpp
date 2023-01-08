@@ -72,7 +72,7 @@ class NewGameButton : public Ui_button
                 ses.clearEntitiesExcept("Player");
                 delete ses.getWorld();
                 ses.createNewWorld(2, 48, 5, 4);
-                ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
+                ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithLilyPad.png");
                 GTurtle* player = static_cast<GTurtle*>(ses.findEntity("Player"));
                 generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), 5, "images/Crocodile.png", true );
                 player->resetForNewLevel();
