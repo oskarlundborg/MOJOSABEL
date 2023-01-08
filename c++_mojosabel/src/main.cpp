@@ -26,7 +26,7 @@ void nextLevelFunc()
 
 void enemiesToNextLevel()
 {
-    generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), ses.getWorld()->getCurrentLevelIndex() + 5, "images/Crocodile.png", true);
+    generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), (ses.getWorld()->getCurrentLevelIndex() * 4) + 5, "images/Crocodile.png", true);
 }
 
 int main(int argc, char* argv[]) 
@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
 
     UI = ses.getRootCanvas();
     UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 0, 400, 100, "WOW SEA ADVENTURE 4000"));
+    UI->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), SCREEN_HEIGHT-100, 400, 100, "KILL ALL CROCODILES"));
 
     ses.createNewWorld(2, 48, 5, 4);
     ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");

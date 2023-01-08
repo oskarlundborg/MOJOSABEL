@@ -14,12 +14,15 @@ GTurtle::GTurtle(int x, int y, int startHealth) : Player(x, y, 32, 32, 0, 3)
     health = startHealth; canShoot = true;
     healthBar = Ui_label::getInstance((10), 0, 100, 50, "Health: " + std::to_string(getHealth()));
     ses.getRootCanvas()->addUiSprite(healthBar);
+    isAlive = true;
 }
 
 void GTurtle::adjustHealth(int changeHealth){
+    if (!isAlive) { return; }
     if((health + changeHealth) <= 0){
         health = 0;
         healthBar->setText("Health: " + std::to_string(getHealth()));
+        isAlive = false;
         die();
         setCollision(false);
     } else {
@@ -69,7 +72,7 @@ class NewGameButton : public Ui_button
                 ses.clearEntitiesExcept("Player");
                 delete ses.getWorld();
                 ses.createNewWorld(2, 48, 5, 4);
-                ses.getWorld()->newLevel("images/WaterTile.png", "images/GrassTile.png");
+                ses.getWorld()->newLevel("images/WaterTile.png", "images/WaterTileWithReeds.png");
                 GTurtle* player = static_cast<GTurtle*>(ses.findEntity("Player"));
                 generateGameObjects<GCrocodile>(ses.getWorld()->getCurrentLevel(), 5, "images/Crocodile.png", true );
                 player->resetForNewLevel();
@@ -79,8 +82,8 @@ class NewGameButton : public Ui_button
         }
 };
 
-
-void GTurtle::die(){
+void GTurtle::die()
+{
     Canvas* c = new Canvas(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     c->addUiSprite(Ui_label::getInstance((SCREEN_WIDTH/2 -200), 200, 400, 80, "Oh no! You died"));
     Ui_button* uiButton = new NewGameButton(c);
@@ -91,16 +94,21 @@ void GTurtle::die(){
 
 void GTurtle::fire(int x, int y)
 {
-    GShellBullet *bullet = new GShellBullet(rect.x, rect.y, x, y);
-    bullet->loadTexture(constants::gResPath + "images/Bullet.png");
-    bullet->setCollision(true);
-    instantiate(bullet);
-    hasColliders();
+    if (canShoot) 
+    {
+         GShellBullet *bullet = new GShellBullet(rect.x, rect.y, x, y);
+        bullet->loadTexture(constants::gResPath + "images/Bullet.png");
+        bullet->setCollision(true);
+        instantiate(bullet);
+        hasColliders();
+    }
 }
 
 void GTurtle::resetForNewLevel() 
 {
     setHealth(100);
     healthBar->setText("Health: " + std::to_string(getHealth()));
+    isAlive = true;
+    canShoot = true;
 }
 
