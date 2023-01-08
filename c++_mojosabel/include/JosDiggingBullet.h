@@ -7,7 +7,7 @@ class JosDiggingBullet : public JosBullet {
 
 public:
     JosDiggingBullet(int x, int y, int targetX, int targetY) 
-        : JosBullet(x, y, "DiggingBullet", 1, targetX, targetY, 1) { }
+        : JosBullet(x, y, "DiggingBullet", 8, targetX, targetY, 1) { }
     void onCollision(Collision<Entity> collision);
 };
 

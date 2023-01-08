@@ -2,6 +2,7 @@
 #define JOSBULLET_H
 
 #include "Bullet.h"
+#include "Constants.h"
 
 using namespace mojosabel;
 
@@ -11,12 +12,5 @@ private:
 public:
     JosBullet(int posX, int posY, std::string tag, int speed, int targetX, int targetY, int damage);
 };
-
-JosBullet::JosBullet(int posX, int posY, std::string tag, int speed, int targetX, int targetY, int damage) 
-        : Bullet(posX, posY, 16, 16, 1, tag, speed, targetX, targetY), damage(damage) 
-{
-    loadTexture(constants::gResPath + "images/Bullet.png");
-    setCollision(true);
-}
 
 #endif

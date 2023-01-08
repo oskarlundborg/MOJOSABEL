@@ -6,10 +6,13 @@
 using namespace mojosabel;
 
 class JosPlayer : public Player {
-
+private:
+    int crystalsRequired;
 public:
-    JosPlayer(int x, int y) : Player(x, y, 32, 32, 3, 4) {}
+    JosPlayer(int x, int y);
     void fire(int x, int y);
     bool levelCompleted();
+    void onCollision(Collision<Entity> collision);
+    void setCrystalsRequired(int req) { crystalsRequired = req; }
 };
 #endif
