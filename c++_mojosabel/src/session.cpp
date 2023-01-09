@@ -225,6 +225,7 @@ namespace mojosabel {
             for (Entity* e : addedEntities)
             {
                 entities.push_back(e);
+                sortEntitiesByLayer();
             }
             addedEntities.clear();
 
@@ -260,6 +261,14 @@ namespace mojosabel {
                 loadNextLevel = false;
             }
         }
+    }
+
+    bool compareEntityLayer(Entity* e1, Entity* e2){
+        return e1->getLayer() < e2->getLayer();
+    }
+
+    void Session::sortEntitiesByLayer(){
+        std::sort(entities.begin(), entities.end(), compareEntityLayer);
     }
 
     void Session::clearEntities()
