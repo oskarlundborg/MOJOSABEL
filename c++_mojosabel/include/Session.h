@@ -27,6 +27,7 @@ namespace mojosabel {
         bool checkColliders(SDL_Rect rectToCheck, std::vector<Collider>& colliders);
         void checkAllCollisions(Entity* entity); // går igenom alla entities och kollar om det objektet kolliderar med något av objekten 
         void capFrameRate(long *renderTime, float *remainder);
+        void sortEntitiesByLayer();
 
     public:
         Session();
