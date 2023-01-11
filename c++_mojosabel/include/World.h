@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Level.h"
-#include "MapGenerator.h"
+#include "BitwiseMapGenerator.h"
 
 
 namespace mojosabel {
@@ -12,7 +12,7 @@ namespace mojosabel {
     {
     private:
         int currentLevel;
-        MapGenerator* mapGenerator;
+        BitwiseMapGenerator* mapGenerator;
         std::vector<Level*> levels;
         
     public:
@@ -24,7 +24,7 @@ namespace mojosabel {
         void drawCurrentLevel();
         const int getCurrentLevelIndex() { return currentLevel; }
         Level* getCurrentLevel() { return levels[currentLevel]; }
-        MapGenerator* getMapGenerator() { return mapGenerator; }
+        BitwiseMapGenerator* getMapGenerator() { return mapGenerator; }
         ~World();
     };
 }
